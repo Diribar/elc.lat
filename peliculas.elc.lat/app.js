@@ -17,9 +17,6 @@ app.use(express.json()); // ¿Para usar JSON con la lectura y guardado de archiv
 // Para usar cookies
 const cookies = require("cookie-parser");
 app.use(cookies());
-// Para permitir acceso desde otros dominios
-const cors = require("cors");
-app.use(cors({origin: "https://evangelicemoslacultura.com", credentials: true}));
 
 // Variables que toman valores de 'path'
 const entProducc = global.path.basename(__dirname) == "1-Actual";
