@@ -1,0 +1,23 @@
+{
+	"name": "elc-peliculas",
+	"description": "Recomendación de películas con valores afines a la Iglesia Católica",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon -e js app.js"
+	},
+	"keywords": [],
+	"author": "Diego Iribarren",
+	"license": "ISC",
+	"dependencies": {
+		"cookie-parser": "^1.4.7",
+		"express": "^4.21.1",
+		"npm": "^10.8.2"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "//github.com/Diribar/ELC-Rutinas"
+	}
+}
