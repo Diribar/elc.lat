@@ -1,0 +1,31 @@
+/* sectorIconos */
+#sectorIconos, #sectorIconos .iconos {display: flex; flex-direction: row; align-items: center;}
+
+/* Comunes */
+#sectorIconos {
+	justify-content: space-around;
+	.iconos {
+		margin: 0 auto; padding: 5px 5px; border-radius: 18px;
+		background: var(--backFlechas); border: 2px solid var(--bordeFlechas);
+		&:has(img) {
+			padding-block: 4px;
+			img {height: 1.75rem;}
+		}
+		&:not(:has(*)) {display: none}
+
+		/* Grupos */
+		:where(i, img, button) {
+			font-size: 1.75rem; background: transparent; border: none;
+			margin: 0 10px; border-radius: 50%; cursor: pointer;
+		}
+		:where(.pack, .pack :where(i, img, button)) {margin: 0 5px;}
+		:where(.fa-circle-left, .fa-circle-right) {color: var(--bordeFlechas); border: none;}
+		:where(button, a) {display: flex; flex-direction: row; align-items: center; height: min-content;}
+
+		/* Particularidades */
+		.fa-chart-simple {rotate: 90deg;}
+		.pack {display: flex; flex-direction: row; align-items: center;}
+		button i {margin: 0;}
+	}
+}
+

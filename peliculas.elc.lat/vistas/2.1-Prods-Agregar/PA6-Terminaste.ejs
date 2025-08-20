@@ -1,0 +1,46 @@
+<%- include("PA9-TituloPrincipal") %>
+<section id="dataEntry" class="flexCol">
+	<div class="flexCol">
+		<!-- Título y Ayuda -->
+		<div id="tituloSecundario">
+			<h2>¡Terminaste!</h2>
+		</div>
+		<img id="gracias" src="<%= imagenMG %>" alt="Muchas gracias">
+		<ul type="disc" id="datos">
+			<li class="texto">Hemos agregado la <%= prodComb.entidadNombre.toLowerCase() %> <em><b><%= prodComb.nombreCastellano %></b></em>.</li>
+			<li class="texto inputError">Nuestro equipo de Revisores analizará los datos ingresados.
+				<i class="<%= iconos.faSolid %> <%= iconos.ayuda %> ayudaIconoForm clickIcono">
+					<ul type="disc" class="clickVista ayudaMensForm ocultar">
+						<li>Según la alineación del producto con nuestro perfil, el resultado será:</li>
+						<ul type="disc" id="subPuntos">
+							<li><b><em>Aprobado</em></b>.</li>
+							<li><b><em>Desaprobado</em></b>.</li>
+						</ul>
+						<li>Si el registro queda aprobado, pasará a estar accesible en las consultas para todo el público.</li>
+						<li>Enviaremos un único mail con las novedades del día.</li>
+					</ul>
+				</i>
+			</li>
+			<li class="texto">Mientras tanto, sólo <u>vos</u> y los revisores podrán ver la información agregada.</li>
+			<!-- Colección -->
+			<% if (entidad == "colecciones") { %>
+				<% if (prodComb.fuente == "TMDB") { %>
+					<li id="capitulos" class="texto"><span>Los capítulos de la colección se están agregando automáticamente, en este momento.</span></li>
+				<% } else { %>
+					<li class="texto">¡Muchas gracias! ¿Podrás ahora cargar los capítulos de la colección?</li>
+				<% } %>
+			<% } %>
+		</ul>
+	</div>
+	<!-- Botones -->
+	<div id="sectorIconos">
+		<%- include("Iconos-1Estandar") %>
+		<% if (prodComb.fuente != "TMDB" && entidad == "colecciones") { %>
+			<div class="iconos">
+				<a href="/producto/agregar-im/?entidad=capitulos&coleccion_id=<%= id %>&numTemp=1&numCap=1">
+					<i class="<%= iconos.faSolid %> fa-layer-group" title="Agregar un capítulo en forma manual"></i>
+				</a>
+			</div>
+		<% } %>
+	</div>
+</section>

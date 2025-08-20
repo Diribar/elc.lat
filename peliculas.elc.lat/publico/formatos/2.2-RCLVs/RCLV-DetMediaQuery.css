@@ -1,0 +1,29 @@
+/* Laptop */
+@media (orientation: landscape) and (width > 1250px) {
+	#contenido #informacion #cuadroDeResultados {margin-inline: 20px;}
+}
+
+/* Ambos */
+@media (orientation: portrait), (orientation: landscape) and (width <= 1250px) {
+	#imgDerecha :is(#links, #sectorIconos).toggle {display: none;}
+}
+
+/* Parado */
+@media (orientation: portrait) {
+	#recuadroDL {
+		width: 100vw !important;
+		#contenido {
+			margin-block: 15px;
+			margin-inline: clamp(0px, calc(50% - var(--anchoBoton) / 2), 15px); /* oscila entre 0px y 15px */
+		}
+	}
+}
+
+/* Acostado */
+@media (orientation: landscape) and (width <= 1250px) {
+	#recuadroDL #contenido {
+		--altoContenido: min(15px, calc((var(--altoCuerpo) - var(--altoBoton) - 14px) / 2)); /* 14px es el ancho de los bordes */
+		margin: var(--altoContenido) 15px;
+	}
+	#cuerpoFooterImgDer #imgDerecha {min-width: unset;}
+}

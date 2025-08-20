@@ -1,0 +1,44 @@
+<!-- Cartel de progreso -->
+<%- include('MN-CartelProgreso', {tarea: "Enviando el mail"}) %>
+
+<!-- Formulario -->
+<form method="POST" class="flexCol">
+	<div id="encabForm">Tus comentarios nos pueden ser de gran ayuda, ¡gracias!</div>
+	<!-- Asunto -->
+	<div class="inputError">
+		<select name="asunto" class="input" autofocus>
+			<option value="">Elegí un asunto</option>
+			<% for (let opcion of asuntosContactanos) { %>
+				<option value="<%= opcion.codigo %>" <% if (opcion.codigo==dataEntry.asunto) { %>selected<% } %>><%= opcion.descripcion %></option>
+			<% } %>
+		</select>
+		<%- include("MN-Errores", {nombre: "asunto"}) %>
+	</div>
+
+	<!-- Película -->
+	<div id="producto" class="inputError flexRowAlign">
+		<input
+			name="inputBR" type="text" placeholder="Buscador de películas"
+			value="<%= dataEntry.inputBR %>"
+		>
+		<p id="escribiMas">Por favor escribí algo más...</p>
+		<select name="prodElegido" class="input"></select>
+		<p id="sinResults">- No encontramos resultados -</p>
+		<%- include("MN-Errores", {nombre: "prodElegido"}) %>
+	</div>
+
+	<!-- Comentario -->
+	<p><span id="contador">500</span>/500</p>
+	<div class="inputError flexCol">
+		<textarea name="comentario" class="input" placeholder="Escribinos tu comentario"><%= dataEntry.comentario %></textarea>
+		<%- include("MN-Errores", {nombre: "comentario"}) %>
+	</div>
+
+	<!-- Iconos -->
+	<div class="iconos">
+		<a href="<%= urlAnterior %>" tabindex="-1" title="Volver a la vista anterior">
+			<i class="<%= iconos.faSolid %> <%= iconos.izquierda %>"></i>
+		</a>
+		<i id="submit" class="<%= iconos.faSolid %> <%= iconos.check %> inactivo" title="Enviar" tabindex="-1"></i>
+	</div>
+</form>

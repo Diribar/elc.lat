@@ -1,0 +1,86 @@
+/* Ambos */
+@media (orientation: portrait), (orientation: landscape) and (width <= 1250px) {
+	/* Información */
+	#recuadroDL #contenido {margin: 15px 20px;}
+
+	/* Links */
+	#imgDerecha {
+		:is(#links, #sectorIconos).toggle {display: none;}
+		#links {
+			position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+			flex-direction: column; align-items: center;
+			nav {
+				flex-direction: column; align-items: center;
+				a, select {margin-top: 10px;}
+				& > *:first-child {margin-top: 0;}
+			}
+			&:has(#sinLinks) {
+				width: max-content;
+				padding-block: 5px; text-wrap: balance; text-align: center;
+				background: var(--amarillo-claro); border: 2px solid gray; border-radius: 10px;
+			}
+			#crueldad {
+				display: flex; flex-direction: column-reverse; align-items: center;
+				color: var(--rojo-oscuro);
+				button {background: var(--rojo-claro);}
+			}
+		}
+	}
+}
+
+/* Parado */
+@media (orientation: portrait) {
+	/* Información */
+	#informacion #marcoInfo {max-width: 85vw;}
+	#datosLargos #marcoInfo #etiquetas {overflow-x: auto; scroll-behavior: smooth;}
+	#datosLargos #marcoInfo #etiquetas .etiqueta {width: min-content;}
+	#imgDerecha #links {
+		&:has(p) {max-width: 50%;}
+		:is(button, select) {font-size: 1.3rem; height: 24px;} /* debe ser sin el 'nav', para las colecciones */
+		.ayudaIconoForm {font-size: 1.3rem;}
+
+		/* Ayuda */
+		.ayuda.links {
+			margin-bottom: 10px;
+			.ayudaIconoForm .ayudaMensForm {
+				translate: -50% -100%; top: -7px; left: 8px; right: auto;
+				max-width: min(275px, 75vw);
+				&::before {translate: -50% 100%; left: 50%; bottom: 0; right: auto; top: auto;}
+				&::before {border-color: var(--backAyuda) transparent transparent transparent;}
+			}
+		}
+		#crueldad {
+			margin-top: 20px;
+			.ayudaIconoForm {
+				margin-top: 10px; color: inherit; border: 1px solid var(--colorAyuda);
+				.ayudaMensForm {
+					translate: -50% 100%; bottom: -7px; left: 8px; right: auto; top: auto;
+					max-width: min(275px, 75vw); text-align: center;
+					border-color: var(--rojo-oscuro); background: var(--rojo-claro);
+					&::before {translate: -50% -100%; left: 50%; top: 0; right: auto; bottom: auto;}
+					&::before {border-color: transparent transparent var(--rojo-oscuro) transparent;}
+					p {color: var(--rojo-oscuro);}
+				}
+			}
+			button {font-size: 1.1rem; height: 24px;}
+		}
+	}
+}
+
+/* Acostado */
+@media (orientation: landscape) and (width <= 1250px) {
+	/* Adecua temas de laptop */
+	#datosLargos #recuadroDL {max-width: calc(100vw - var(--anchoImgDer) - 2vw) !important;}
+	#datos #marcoInfo {margin: 0;}
+	#imgDerecha #links {
+		&:has(p) {max-width: 70%;}
+		nav :is(button, select) {font-size: 1.1rem; height: 20px;}
+		#crueldad {
+			margin-top: 10px;
+			button {font-size: 1rem; height: 20px;}
+		}
+	}
+
+	/* Sectores a ocultar */
+	#cuerpoFooter #datosLargos #links, #imgDerecha #links .ayuda.links, #crueldad i {display: none !important;}
+}

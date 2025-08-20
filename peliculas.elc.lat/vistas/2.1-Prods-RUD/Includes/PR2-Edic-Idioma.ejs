@@ -1,0 +1,21 @@
+<section class="labelInput">
+	<label>Idioma original</label>
+	<div class="inputError">
+		<select name="idiomaOriginal_id" class="input">
+			<option value="" <% if (!idioma_id) { %>selected<% } %>>Elegí un idioma</option>
+			<optgroup label="Más frecuentes">
+				<% for (let idioma of idiomas.filter(n => n.masFrecuente)) { %>
+					<option value="<%= idioma.id %>" <% if (idioma.id==idioma_id) { %>selected<% } %>><%= idioma.nombre %></option>
+				<% } %>
+			</optgroup>
+			<optgroup label="Demás idiomas">
+				<% for (let idioma of idiomas.filter(n => !n.masFrecuente)) { %>
+					<option value="<%= idioma.id %>" <% if (idioma.id==idioma_id) { %>selected<% } %>><%= idioma.nombre %></option>
+				<% } %>
+			</optgroup>
+		</select>
+		<%- include("MN-Errores", {nombre: "idiomaOriginal_id", ocultarOK: true}) %>
+		<!-- Aviso de cambio en el data-entry -->
+		<i class="<%= iconos.faSolid %> <%= iconos.edicionCambiada %> ocultar"></i>
+	</div>
+</section>

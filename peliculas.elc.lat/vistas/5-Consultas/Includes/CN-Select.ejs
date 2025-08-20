@@ -1,0 +1,12 @@
+<% const {codigo, titulo, opciones} = campo %>
+<div id="<%= codigo %>" class="pref contSelect ocultaFiltro <%- locals.color ? color : '' %>">
+	<select name="<%= codigo %>" class="<%= locals.eventual ? codigo : 'presenciaEstable' %> prefSimple">
+		<% if (titulo) { %>
+			<option value=""><%= titulo %></option>
+			<option value="" class="sinFiltro">Quitar la opción elegida</option>
+		<% } %>
+		<% for (let opcion of opciones.filter(n=>!n.indiv)) { %>
+			<option value="<%= opcion.id %>"><%= opcion.nombre %></option>
+		<% } %>
+	</select>
+</div>

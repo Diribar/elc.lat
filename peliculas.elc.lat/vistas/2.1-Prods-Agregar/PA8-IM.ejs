@@ -1,0 +1,69 @@
+<div id="tituloPrincipal">
+	<h1 id="titulo">Agregá una Película o Colección a nuestra Base de Datos</h1>
+</div>
+<div class="flexCol" id="dataEntry">
+	<div id="tituloSecundario">
+		<h2 id="paso2">Ingreso Manual</h2>
+	</div>
+	<form method="POST">
+		<!-- Datos a completar -->
+		<section id="datos">
+			<!-- Tipo de Producto -->
+			<h3>Tipo de Producto</h3>
+			<select name="entidad" class="input" autofocus>
+				<option value="" selected>Elegí una opción</option>
+				<% for (entidad of entidades) { %>
+					<option value="<%= entidad.codigo %>" <% if (dataEntry.entidad == entidad.codigo) { %>selected<% } %>>
+						<%= entidad.nombre %>
+					</option>
+				<% } %>
+			</select>
+			<!-- Datos del capítulo -->
+			<div class="invisible">
+				<!-- Datos del capítulo -->
+				<h3>Nombre de la Colección</h3>
+				<div class="inputError">
+					<select name="coleccion_id" class="input" disabled>
+						<option value="">Elejí una opción</option>
+					</select>
+					<%- include("MN-Ayuda", {mensajes: ["Buscá entre las colecciones que tenemos en nuestra Base de Datos", "Si no la encontrás, vamos a necesitar que la agregues antes que el capítulo"]}) %>
+				</div>
+				<h3>Número de Temporada</h3>
+				<div class="inputError">
+					<!-- Data Entry -->
+					<select name="numTemp" class="input" disabled>
+						<option value="">Elejí una opción</option>
+					</select>
+					<%- include("MN-Ayuda", {mensaje: "Se muestran todas las temporadas según nuestra base de datos, y una más"}) %>
+				</div>
+				<h3>Número de Capítulo</h3>
+				<div class="inputError">
+					<select name="numCap" class="input" disabled>
+						<option value="">Elejí una opción</option>
+					</select>
+					<%- include("MN-Ayuda", {mensaje: "Se muestran solamente los capítulos que no tenemos en nuestra base de datos"}) %>
+				</div>
+			</div>
+		</section>
+		<!-- Iconos -->
+		<section id="sectorIconos">
+			<div class="iconos">
+				<a href="/producto/agregar-ds" tabindex="-1" title="Volver al paso anterior">
+					<i class="<%= iconos.faSolid %> <%= iconos.izquierda %>"></i>
+				</a>
+				<button class="inactivo submit" type="submit" title="Avanzar">
+					<i class="<%= iconos.faSolid %> <%= iconos.check %>"></i>
+				</button>
+			</div>
+			<div class="iconos">
+				<% if (autorizadoFA) { %>
+					<label class="inactivo submit" for="inputSubmit" title="Avanzar mediante Film Affinity">
+						<img id="logoFA" src="/imgsPropio/2-LogosInfo/BD-FA.jpg" alt="FA">
+					</label>
+					<% const cola = (!urlActual.includes("/?") ? "/?" : "&") + "ingreso_fa=true" %>
+					<input id="inputSubmit" type="submit" class="submit" formaction="<%= urlActual + cola %>" formmethod="post">
+				<% } %>
+			</div>
+		</section>
+	</form>
+</div>

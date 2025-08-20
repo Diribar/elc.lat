@@ -1,0 +1,23 @@
+<section id="imgDerecha" class="inputError">
+	<!-- Input de avatar nuevo -->
+	<label for="inputImagen">
+		<img id="imgEdicN" src="<%= imgDerPers.edic %>" class="imgAvatar edicN">
+	</label>
+	<input name="avatar" id="inputImagen" type="file" accept="image/*" class="input ocultar">
+	<!-- Demás avatars -->
+	<img id="avatarEdicG" src="<%= imgDerPers.edic %>" class="ocultar imgAvatar edicG">
+	<img id="avatarOrig" src="<%= imgDerPers.orig %>" class="ocultar imgAvatar orig">
+	<div class="ayudaErrores absoluteCentro">
+		<%- include("MN-Ayuda", {mensajes: ["Haciendo <em>click</em> en la imagen podés reemplazarla.", "Podés elegir una imagen de internet sin descargarla en tu equipo, ingresando su dirección url.", "La extensión de la imagen debe ser <em><b>JPG</b></em>, <em><b>JPEG</b></em> o <em><b>PNG</b></em>."]}) %>
+		<%- include("MN-Errores", {nombre: "avatar", ocultarOK: true}) %>
+	</div>
+	<!-- Aviso de cambio en el data-entry -->
+	<i class="<%= iconos.faSolid %> <%= iconos.edicionCambiada %> ocultar"></i>
+	<!-- Links a sitios externos para buscar imágenes alternativas -->
+	<nav class="agregados scaleChildren">
+		<% const nombre = registro.nombreCastellano ? registro.nombreCastellano.toLowerCase() : registro.nombreOriginal ? registro.nombreOriginal.toLowerCase() : "" %>
+		<a href="<%= '//google.com/search?q=' + nombre + '&tbm=isch&tbs=isz:l&hl=es-419' %>" target="_blank">
+			<img src="/imgsPropio/2-LogosInfo/BD-Google.jpg" title="Buscar en Google" class="scale">
+		</a>
+	</nav>
+</section>

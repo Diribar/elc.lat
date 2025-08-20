@@ -1,0 +1,89 @@
+<div id="encabezado" class="<%= codigo %> st_<%= registro.statusRegistro.codigo %>">
+	<!-- Izquierda -->
+	<% if (codigo != "detalle") { %><% const urlInicio = entidad != "links" ? (entidad + '/detalle/' + familia[0]) : "links/mirar/l" %><a href="/<%= urlInicio %>/?id=<%= id %>"><% } %>
+	<div id="nombres">
+			<!-- Nombre principal -->
+			<h2>
+			<!-- N° de capítulo / Nombre -->
+			<% if (registro.numCap) { %><%= registro.numCap + ". " %><% } %>
+			<% if (registro.nombreCastellano) { %><%= registro.nombreCastellano + (registro.anoEstreno ? " (" + registro.anoEstreno + ")" : "") %><% } else { %><%= locals.canonNombre + registro.nombre %><% } %>
+			</h2>
+			<!-- Nombre alternativo -->
+			<% const nombreAltern = registro.nombreOriginal || registro.nombreAltern %>
+			<% if (nombreAltern) { %>
+				<h3><em><%= nombreAltern %></em></h3>
+		<% } %>
+	</div>
+	<% if (codigo != "detalle") { %></a><% } %>
+
+	<!-- Derecha -->
+	<% if (registro.colCap) { %>
+		<% const inactivar = "/inactivar-captura/?id=" + id + "&urlOrigen=" + urlOrigen + "&prodEnt="; %>
+		<div id="colCap">
+			<% if (entidad == "colecciones") { %>
+				<!-- Cantidad de Temporadas y de Capítulos -->
+				<div id="cantTempsCaps">
+					<% if (locals.redirige) { %><a href="/colecciones<%= inactivar %>capitulos&prodId=<%= registro.primCap_id %>"><% } %>
+						<button type="button">
+							<!-- Cantidad de Temporadas -->
+							<% if (registro.cantTemps > 1) { %><p id="temporadas"><b>Temporadas:</b> <%= registro.cantTemps %></p><% } %>
+							<!-- Cantidad de Capítulos -->
+							<p><b>Cant. de Capítulos:</b> <%= registro.cantCaps %></p>
+						</button>
+					<% if (locals.redirige) { %></a><% } %>
+				</div>
+			<% } %>
+			<% if (entidad == "capitulos") { %>
+				<!-- Nombre de la colección -->
+				<div id="nombreCol">
+					<p id="coleccionTitulo">Colección:</p>
+					<% if (locals.redirige) { %><a href="/capitulos<%= inactivar %>colecciones&prodId=<%= registro.coleccion_id %>"><% } %>
+					<button type="button"><%= registro.coleccion.nombreCastellano %></button>
+					<% if (locals.redirige) { %></a><% } %>
+				</div>
+				<!-- Cambia numTemp o numCap -->
+				<div id="cambiaTempCap">
+					<% if (locals.redirige) { %>
+					<!-- Avanza/Retrocede un capítulo -->
+					<div class="pack">
+						<% if (registro.capAnt_id) { %>
+							<a href="/capitulos<%= inactivar %>capitulos&prodId=<%= registro.capAnt_id %>">
+								<i class="<%= iconos.faSolid %> <%= iconos.izquierda %> pointer" tabindex="-1" title="Ir al capítulo anterior"></i>
+							</a>
+						<% } %>
+						<% if (registro.capPost_id) { %>
+							<a href="/capitulos<%= inactivar %>capitulos&prodId=<%= registro.capPost_id %>">
+								<i class="<%= iconos.faSolid %> <%= iconos.derecha %> pointer" tabindex="-1" title="Ir al capítulo posterior"></i>
+							</a>
+						<% } %>
+					</div>
+					<% } %>
+					<!-- Elige un numTemp -->
+					<% if (registro.cantTemps > 1) { %>
+						<% if (locals.redirige) { %>
+						<select id="numTemp" onchange="location='/capitulos<%= inactivar %>capitulos&prodId=' + this.value;">
+							<% registro.numsTemp.forEach((numTemp,i) => { %>
+								<option value="<%= registro.idsPrimerCapTemp[i] %>" <% if (numTemp == registro.numTemp) { %>selected<% } %> >Temporada <%= numTemp %></option>
+							<% }) %>
+						</select>
+						<% } else { %>
+						<!-- Información de temporada -->
+						<p style="margin-right: 15px;"><b>Temporada:</b> <%= registro.numTemp %></p>
+						<% } %>
+					<% } %>
+					<% if (locals.redirige) { %>
+					<!-- Elige un numCap -->
+					<select id="numCap" onchange="location='/capitulos<%= inactivar %>capitulos&prodId=' + this.value;">
+						<% for (let capitulo of registro.capsTempAct) { %>
+							<option value="<%= capitulo.id %>" <% if (registro.numCap == capitulo.numCap) { %>selected<% } %> ><%= capitulo.numCap + ". " + capitulo.nombreCastellano %></option>
+						<% } %>
+					</select>
+					<% } %>
+				</div>
+			<% } %>
+		</div>
+	<% } %>
+	<% if (familia == "rclv" && codigo == "detalle" && locals.prodsDelRclv) { %>
+		<div id="vinculadas">Películas: <span><%= prodsDelRclv.filter(n => !n.fueraDeConsulta).length %></span></div>
+	<% } %>
+</div>

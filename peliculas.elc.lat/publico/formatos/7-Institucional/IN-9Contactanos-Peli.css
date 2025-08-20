@@ -1,0 +1,13 @@
+/* Si corresponde, oculta la sección de prodElegido */
+form:not(:has(select[name="asunto"] option[value="producto"]:checked)) > #producto {display: none !important;}
+
+#producto {
+	justify-content: space-between; margin-top: 5px;
+	input, select {border: 1px solid var(--azul-oscuro); border-radius: 5px;}
+	input {padding: 1px 5px; font-size: 1rem; max-width: min(40%);}
+	p, select {width: fit-content; max-width: 55%;}
+	select:not(:has(option)) {display: none;}
+	&:has(select option) > #sinResults {display: none;}
+	&:not(:has(#escribiMas.ocultar)) > #sinResults {display: none;}
+	#escribiMas, #sinResults {font-style: italic; padding: 2px 7px;}
+}

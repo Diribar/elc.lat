@@ -1,0 +1,51 @@
+/* Datos Largos */
+#datos #datosLargos #recuadroDL {
+	#contenido, #informacion, #historial, .titulos {background-color: inherit;}
+	#contenido #informacion {
+		max-width: 600px; max-height: 250px;
+		#historial {
+			overflow-y: auto; position: relative;
+			.titulos {
+				display: flex; flex-direction: row;
+				position: sticky; top: 0;
+				input[type="radio"] {margin-right: 3px;}
+			}
+			table {
+				border-spacing: 5px 8px;
+				tr td {
+					vertical-align: top;
+					&.fecha {min-width: 65px; text-align: right;}
+					&.status {
+						text-wrap: wrap;
+						span {line-height: 1.1; font-style: italic;}
+					}
+				}
+			}
+			.status b {padding-inline: 5px; border-radius: 8px;}
+			#creado b, #creadoAprob b, #recuperar b, #aprobado b {border: 1px var(--verde-oscuro) solid;}
+			#inactivar b, #inactivo b {border: 1px var(--rojo-oscuro) solid;}
+			#creado b, #creadoAprob b, #recuperar b {background: var(--verde-claro); color: var(--verde-oscuro);}
+			#inactivar b {background: var(--rojo-claro); color: var(--rojo-oscuro);}
+			#aprobado b, #inactivo b {color: snow; }
+			#aprobado b {background: var(--verde-oscuro);}
+			#inactivo b {background: var(--rojo-oscuro);}
+
+			#statusRegistro {
+				display: flex; flex-direction: row; align-items: center; margin: 2px 0 6px;
+				h3 {margin-right: 3px;}
+			}
+		}
+		#comentario {margin-left: 15px; min-width: 250px; width: 250px;}
+	}
+}
+
+@media (orientation: portrait) {
+	#recuadroDL #contenido {
+		margin: 0 30px;
+		#informacion {margin-top: 20px;}
+		& > #sectorIconos {
+			display: flex !important; margin: 15px 0 !important;
+			#cambioStatus {display: none;}
+		}
+	}
+}

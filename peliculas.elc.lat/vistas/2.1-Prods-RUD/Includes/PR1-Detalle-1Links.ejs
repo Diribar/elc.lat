@@ -1,0 +1,49 @@
+<div id="links" class="marco toggle">
+	<% if (entidad == "colecciones") { %>
+		<% const urlDestino = "/capitulos/detalle/p/?id=" + registro.primCap_id; %>
+		<% const cola = "&urlDestino=" + encodeURIComponent(urlDestino); %>
+		<a href="/colecciones/inactivar-captura/?id=<%= id %><%= cola  %>">
+			<button id="primerCap" type="button">Ir al primer capítulo</button>
+		</a>
+	<% } else if (links.existen) { %>
+		<% const {parrafo, mensajes} = ayudaLinks %>
+		<%- include("MN-Ayuda", {ayudaClass: "links", parrafo, mensajes}) %>
+		<!-- Links -->
+		<nav>
+			<% let autofocus %>
+			<% for (let grupo in links) { %>
+				<% const link0 = links[grupo][0] %>
+				<% if (!links[grupo].length) {continue} %>
+				<% if (links[grupo].length == 1) { %>
+					<a href="<%= link0.url %>">
+						<button type="button"
+							class="<%= link0.idioma %>"
+							<% if (!autofocus) { %>autofocus<% } %>
+						><%= link0.titulo %></button>
+						<% autofocus = true %>
+					</a>
+				<% } else { %>
+					<% const color = links[grupo].every(n=> n.idioma == link0.idioma) ? link0.idioma : "varios" %>
+					<select class="<%= color %> scaleCh" onchange="location = this.options[this.selectedIndex].value">
+						<option value="" disabled selected><%= link0.titulo %></option>
+						<% for (const link of links[grupo]) { %>
+							<option value="<%= link.url %>" class="<%= link.idioma %>"><%= link.leyenda %></option>
+						<% } %>
+					</select>
+				<% } %>
+			<% } %>
+		</nav>
+	<% } else { %>
+		<p id="sinLinks"><em>No tenemos links para verla. Con tu usuario en una laptop, estás invitado a aportarnos alguno</em></p>
+	<% } %>
+	<% if (registro.crueldad) { %>
+		<div id="crueldad">
+			<i class="<%= iconos.faSolid %> fa-circle-exclamation pointer ayudaIconoForm clickIcono">
+				<div class="clickVista ayudaMensForm ocultar">
+					<p>Esta película tiene escenas de crueldad que pueden afectar la sensibilidad del espectador</p>
+				</div>
+			</i>
+			<button type="button">Crueldad sensible</button>
+		</div>
+	<% } %>
+</div>

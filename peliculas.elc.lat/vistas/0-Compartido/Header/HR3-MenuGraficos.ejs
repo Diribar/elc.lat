@@ -1,0 +1,14 @@
+<% if (locals.usuario && usuario.rol.revisorEnts) { %>
+	<!-- Todos los revisores o superior -->
+	<div class="clickVista menuForm menuFondo ocultar">
+		<% let rubro %>
+		<% for (codigo in graficos) { %>
+			<% if (rubro && rubro != graficos[codigo].rubro) { %><hr><% } %>
+			<% rubro = graficos[codigo].rubro %>
+			<a href="/graficos/<%= graficos[codigo].url %>" class="menuOpcion<%- graficos[codigo].resaltar ? ' resaltar' : '' %>">
+				<i class="<%= iconos.faSolid %> <%= graficos[codigo].icono %> icono"></i>
+				<span><%= graficos[codigo].titulo %></span>
+			</a>
+		<% } %>
+	</div>
+<% } %>

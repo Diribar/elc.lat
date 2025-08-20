@@ -1,0 +1,80 @@
+<div id="estandar" class="iconos">
+	<!-- Por origen -->
+	<% if (origen == "DT") { // Detalle %>
+		<a href="<%= '/' + entidad + '/detalle/' + siglaFam + '/?id=' + id %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.detalle %>" tabindex="-1" title="Ir a la vista 'Detalle'"></i>
+		</a>
+	<% } %>
+	<% if (["PED", "PDA"].includes(origen) && locals.prodEnt) { // Ir desde la vista de rclv a la vista de producto %>
+		<% if (locals.id && locals.prodId) { // Desde rclvEdic a prodEdic %><a href="<%= '/' + entidad + '/inactivar-captura/?id=' + id + "&prodEnt=" + prodEnt + "&prodId=" + prodId + "&origen=PED" %>" tabindex="-1">
+		<% } else if (locals.id) { // Desde rclvEdic a prodAgregar %><a href="<%= '/' + entidad + '/inactivar-captura/?id=' + id + "&prodEnt=" + prodEnt + "&origen=PDA" %>" tabindex="-1">
+		<% } else if (locals.prodId) { // Desde rclvAgregar a prodEdicion %><a href="<%= '/' + prodEnt + '/edicion/p/?id=' + prodId %>" tabindex="-1">
+		<% } else { // Desde rclvAgregar a prodAgregar %><a href="<%= '/' + prodEnt + '/agregar-da' %>" tabindex="-1"><% } %>
+			<i class="<%= iconos.faSolid %> <%= iconos.prod %>" tabindex="-1" title="Volver al producto"></i>
+		</a>
+	<% } %>
+	<% if (origen == "TE") { // Tablero de Revisión %>
+		<a href="<%= '/' + entidad + '/inactivar-captura/?id=' + id + "&origen=TE" %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.revision %>" tabindex="-1" title="Volver al Tablero"></i>
+		</a>
+	<% } %>
+	<% if (origen == "RE") { // Revisión de Edición %>
+		<a href="<%= '/revision/edicion/' + entidad + '/?id=' + id %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.revision %>" tabindex="-1" title="Volver a la Revisión de Edición"></i>
+		</a>
+	<% } %>
+	<% if (origen == "RL") { // Revisión de Links %>
+		<a href="<%= '/revision/abm-links/p/' + entidad + '/?id=' + id %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.revision %>" tabindex="-1" title="Volver a la Revisión de Links"></i>
+		</a>
+	<% } %>
+	<% if (origen == "MT") { // Mantenimiento %>
+		<a href="<%= '/' + entidad + '/inactivar-captura/?id=' + id + "&origen=MT" %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.mantenim %>" tabindex="-1" title="Volver al Tablero"></i>
+		</a>
+	<% } %>
+
+	<!-- Por codigo -->
+	<% if (["prodRud", "rclvCrud"].includes(tema) && codigo == "detalle" || tema == "prodAgregar" && codigo == "terminaste") { // Detalle prod/rclv o Agregar-Terminaste %>
+		 <!-- Ir a Edición -->
+		<%- include("Iconos-1EstandarInclude", {rubro: "edicion", icono: "edicion", titulo: "Edición"}) %>
+		<% if (familia == "producto") { %>
+			<!-- Ir a ABM Links -->
+			<%- include("Iconos-1EstandarInclude", {rubro: "abm-links", icono: "link", titulo: "ABM-Links"}) %>
+			<!-- Ir a Califica -->
+			<%- include("Iconos-1EstandarInclude", {rubro: "califica", icono: "califica", titulo: tituloLink}) %>
+			<% if (entidad == "colecciones") { %>
+				<!-- Ordena capítulos -->
+				<%- include("Iconos-1EstandarInclude", {rubro: "ordena-capitulos", icono: "arrAbajo", titulo: "Reordenar capítulos"}) %>
+			<% } %>
+		<% } %>
+	<% } %>
+	<% if (tema == "prodRud" && codigo == "detalle") { %>
+		<!-- Ir a Contactanos -->
+		<a href="<%= '/institucional/contactanos/?inputBR=' + (registro.nombreCastellano || registro.nombreOriginal) %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.mail %>" tabindex="-1" title="Ir a 'Contactanos'"></i>
+		</a>
+	<% } %>
+	<% if (tema == "linksCrud" && codigo == "mirarLink") { %>
+		<!-- Ir a ABM links -->
+		<a href="<%= '/' + entidad + '/abm-links/p/?id=' + id %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.link %>" tabindex="-1" title="Ir a la vista 'ABM - Links'"></i>
+		</a>
+	<% } %>
+	<% if (tema == "revisionEnts" && codigo == "edicion") { %>
+		<!-- Ir a Revisión de Edición -->
+		<a href="<%= '/' + entidad + '/edicion/'+ siglaFam +'/?id=' + id + "&origen=RE" %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.edicion %>" tabindex="-1" title="Ir a la vista 'Edición'"></i>
+		</a>
+	<% } %>
+	<% if (tema == "revisionEnts" && codigo == "abmLinks") { %>
+		<!-- Ir a Revisión de links -->
+		<a href="<%= '/' + entidad + '/abm-links/p/?id=' + id + "&origen=RL" %>" tabindex="-1">
+			<i class="<%= iconos.faSolid %> <%= iconos.link %>" title="Ir a la vista 'ABM-Links'" tabindex="-1"></i>
+		</a>
+	<% } %>
+	<% if (codigo == "abmLinks") { %>
+		<!-- Preferencias por producto -->
+		<i id="ppp" class="<%= interesDelUsuario.icono %>" tabindex="-1" title="<%= interesDelUsuario.nombre %>"></i>
+	<% } %>
+</div>

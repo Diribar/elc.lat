@@ -1,0 +1,24 @@
+<tr class="edicion revisar fila<%= fila %>">
+	<!-- Url -->
+	<td class="anchoUrl url campo"></td>
+	<!-- Demás campos con valor agregado -->
+	<% for (campo of camposARevisar) { %>
+		<td class="<%= campo %>">
+			<% if (edicion[campo] !== null) { %>
+				<div class="inputError ancho<%= comp.letras.inicialMayus(campo) %>">
+					<% let valor = campo == "tipo_id" ? (edicion[campo] == 1 ? "Trailer" : "Película") : ["castellano", "subtitulos", "gratuito", "completo"].includes(campo) ? (edicion[campo] ? "SI" : "NO") : edicion[campo] %>
+					<input class="inputs" name="<%= campo %>" type="text" value="<%= valor %>" disabled>
+					<!-- Errores -->
+					<div class="errores">
+						<i class="<%= iconos.faSolid %> <%= iconos.check %> aprob"></i>
+						<i class="<%= iconos.faSolid %> <%= iconos.xMark %> rech"></i>
+					</div>
+					<!-- Edición ID -->
+					<div class="edicId ocultar"><%= edicion.id %></div>
+				</div>
+				<!-- Un sólo campo por vez -->
+				<% break %>
+			<% } %>
+		</td>
+	<% } %>
+</tr>

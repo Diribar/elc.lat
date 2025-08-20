@@ -1,0 +1,41 @@
+<% for (let prod of prodsDelRclv) { %>
+	<li class="prodsNuevos<% if (prod.fueraDeConsulta) { %> fueraDeConsulta ocultar<% } %>">
+		<a href="<%= '/' + prod.entidad + '/detalle/p/?id=' + prod.id %>">
+			<!-- Info a mostrar -->
+			<button id= "prod" type="text" class="flexRow<% if (prod.statusRegistro_id == inactivo_id) { %> rojo<% } %>" autofocus>
+				<img class="imagenChica"
+					src="<%= prod.avatar %>"
+					alt="<%= prod.nombreOriginal %>"
+					title="<%= prod.nombreOriginal %>"
+					style="view-transition-name: <%= prod.entidad + prod.id %>"
+				>
+				<div id="infoPeli" class="flexCol">
+					<p id="nombreCastellano" class="interlineadoChico"><%= prod.nombreCastellano ? prod.nombreCastellano : prod.nombreOriginal %></p>
+					<div id="inferior">
+						<p id="anoEstreno" class="interlineadoChico"><%= prod.anoEstreno + " - " + prod.entidadNombre %></p>
+						<% if (prod.direccion) { %>
+							<p class="interlineadoChico">Dirección: <%= prod.direccion %></p>
+						<% } %>
+						<div class="flexRowAlign interlineadoChico">
+							<% if (usuario) { %>
+								<div id="ppp" class="flexRowAlign relative">
+									<i class="scale <%= prod.ppp.icono %>" tabindex="-1" title="<%= prod.ppp.nombre %>"></i>
+									<p id="texto" class="absolute ocultar"><%= prod.ppp.nombre %></p>
+								</div>
+							<% } %>
+							<% if (prod.linksGral == conLinks) { %>
+								<i id="prodConLink" class="<%= iconos.faSolid %> <%= iconos.link %>" title="Con link"></i>
+							<% } %>
+							<% if (prod.crueldad) { %>
+								<i id="crueldad" class="<%= iconos.faSolid %> fa-circle-exclamation" title="Crueldad sensible"></i>
+							<% } %>
+							<% if (prod.calificacion) { %>
+								<p id="calificacion" title="Calificación"><%= prod.calificacion %>%</p>
+							<% } %>
+						</div>
+					</div>
+				</div>
+			</button>
+		</a>
+	</li>
+<% } %>

@@ -1,0 +1,29 @@
+<% if (tema == "prodRud") { %>
+	<div id="prodRud" class="iconos">
+		<% if (codigo == "edicion") { %>
+			<!-- Muestra la nueva edición sin guardar -->
+			<i class="<%= iconos.faSolid %> fa-pen-to-square activaVersion activo" tabindex="-1" title='Muestra la edición nueva'></i>
+			<!-- Guarda los cambios de la nueva edición -->
+			<button type="submit" id="guardar" class="edicN inactivoVersion">
+				<i class="<%= iconos.faSolid %> <%= iconos.check %>" tabindex="-1" title='Guarda la edición nueva'></i>
+			</button>
+			<!-- Recarga la vista -->
+			<i class="<%= iconos.faSolid %> <%= iconos.xMark %> elimina edicN  inactivoVersion" tabindex="-1" title='Elimina la edición nueva'></i>
+
+			<i class="<%= iconos.faSolid %> fa-slash inactivo" tabindex="-1"></i>
+
+			<!-- Muestra la edición guardada -->
+			<i class="<%= iconos.faSolid %> fa-pencil activaVersion inactivoVersion" tabindex="-1" title='Muestra la edición guardada'></i>
+			<!-- Elimina la edición guardada -->
+			<i class="<%= iconos.faSolid %> <%= iconos.eliminar %> elimina edicG inactivoVersion" tabindex="-1" title='Elimina la edición guardada'></i>
+
+			<i class="<%= iconos.faSolid %> fa-slash inactivo" tabindex="-1"></i>
+
+			<!-- Muestra la versión original -->
+			<i class="<%= iconos.faSolid %> <%= iconos.hogar %> activaVersion" tabindex="-1" title='Muestra la versión original'></i>
+		<% } %>
+		<% if (locals.interesDelUsuario) { %>
+			<i id="ppp" class="<%= interesDelUsuario.icono %>" tabindex="-1" title="<%= interesDelUsuario.nombre %>"></i>
+		<% } %>
+	</div>
+<% } %>

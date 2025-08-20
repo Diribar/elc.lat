@@ -1,0 +1,47 @@
+/* Marco general */
+#cuerpoFooterImgDer {
+	#cuerpoFooter {
+		height: 100%;
+
+		/* Aspectos comunes */
+		#cuerpo #cuadroDeTexto, #cuadroDeTexto form {position: relative;}
+		#cuadroDeTexto form, .inputError:has(textarea) {height: 100%;}
+
+		#cuerpo #cuadroDeTexto {
+			min-width: min(100vw, 450px); padding-inline: 30px;
+
+			form {
+				#encabForm {align-self: center; margin-bottom: 10px; font-size: 1.1rem; font-weight: bold; color: var(--verde-oscuro);}
+
+				/* Contador */
+				p:has(#contador) {text-align: right; margin-top: 10px;}
+
+				/* Inputs */
+				.inputError {
+					input, select, textarea {border-radius: 7px;}
+
+					/* Aspectos particulares - Select */
+					select {
+						font-weight: bold; color: snow; background: var(--verde-oscuro);
+						option {background-color: snow; color: var(--azul-oscuro);}
+						&[name="asunto"] {
+							width: 100%;
+							&:has(option[value=""]:checked) {background: var(--rojo-oscuro);}
+						}
+					}
+
+					/* Aspectos particulares - Textarea */
+					textarea {padding: 5px; resize: none; height: inherit; width: 100%;}
+				}
+
+				/* Iconos */
+				.iconos {
+					margin-top: 20px; display: flex !important;
+					i {cursor: pointer;}
+				}
+			}
+		}
+
+	}
+	#imgDerecha img {max-width: 100vw;}
+}

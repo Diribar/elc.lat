@@ -1,0 +1,39 @@
+<div class="bloque">
+	<h2>Nuestro Perfil de Películas</h2>
+	<ul type="disc">
+		<li>Películas con valores afines a los de la <b>Iglesia Católica Apostólica Romana</b>.</li>
+		<li>
+			Entre ellas, incluimos algunas sin trasfondo católico, siguiendo lo establecido por nuestra Iglesia en el Concilio Vaticano II.
+			<%- include("IN-PerfilPelis-Label", {texto: "Detalle"}) %>
+			<ul class="textoOculto">
+				<li>
+					No rechaza nada de lo que en estas religiones haya de santo y verdadero.
+					<i class="<%= iconos.faSolid %> <%= iconos.ayuda %> ayudaIconoForm clickIcono">
+						<div class="clickVista ayudaMensForm"><%- include("IN-CVII-Nostra Aetate") %></div>
+					</i>
+				</li>
+				<li>
+					Considera con sincero respeto [...] aquellos preceptos y doctrinas que, aunque difieran en muchos puntos de lo que [la Iglesia] sostiene [, a] veces reflejan un destello de aquella Verdad que ilumina a todos los hombres.
+					<i class="<%= iconos.faSolid %> <%= iconos.ayuda %> ayudaIconoForm clickIcono">
+						<div class="clickVista ayudaMensForm"><%- include("IN-CVII-Nostra Aetate") %></div>
+					</i>
+				</li>
+				<li>
+					Exhorta a que sus hijos reconozcan, guarden y promuevan aquellos bienes espirituales y morales [...] que en ellos existen [...].
+					<i class="<%= iconos.faSolid %> <%= iconos.ayuda %> ayudaIconoForm clickIcono">
+						<div class="clickVista ayudaMensForm"><%- include("IN-CVII-Gaudium et Spes") %></div>
+					</i>
+				</li>
+			</ul>
+		</li>
+		<li>
+			Omitimos las películas que distorsionen la tradición de la Iglesia Católica, o tengan desvíos indeseados.
+			<%- include("IN-PerfilPelis-Label", {texto: "Ejemplos"}) %>
+			<ul class="textoOculto">
+				<% for (let motivo of motivosBlandos) { %>
+				<li><%= motivo %>.</li>
+				<% } %>
+			</ul>
+		</li>
+	</ul>
+</div>

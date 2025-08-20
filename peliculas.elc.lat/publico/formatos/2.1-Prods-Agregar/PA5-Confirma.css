@@ -1,0 +1,33 @@
+/* Título */
+#dataEntry #tituloSecundario {margin-bottom: 10px;}
+
+/* Texto */
+#dataEntry #datos {
+	padding-left: 20px;
+	.texto {margin: 3px 0; font-size: 1.2rem;}
+	#liConAyuda {
+		display: flex; flex-direction: row; align-items: center; justify-content: flex-start;
+		.ayudaIconoForm {
+			margin-left: 10px;
+			.ayudaMensForm {
+				max-width: 350px;
+				#subPuntos {
+					margin-left: 20px; margin-bottom: 5px;
+					li {padding-top: 0;}
+				}
+			}
+		}
+	}
+}
+
+/* Datos del producto */
+#dataEntry #datosProd {
+	margin-top: 15px; display: flex; flex-direction: column; max-width: 400px; align-self: center;
+	p {margin: 3px;}
+}
+
+#dataEntry .iconos {
+	margin-top: 30px; display: flex; flex-direction: row;
+	button {background: transparent; border: none; padding: 0; border-radius: 50%; margin: 0 15px;}
+	#llegada {height: 40px; margin: 0;}
+}

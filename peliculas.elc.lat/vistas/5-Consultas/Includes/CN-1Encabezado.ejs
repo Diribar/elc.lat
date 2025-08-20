@@ -1,0 +1,58 @@
+<section id="encabezado">
+	<!-- El id debe ser 'tituloPrincipal' por formato compartido -->
+	<div id="tituloPrincipal" class="flexCol">
+		<div id="layoutCheckbox" class="flexRowAlign">
+			<!-- Layout -->
+			<select name="layout_id" class="prefSimple" required>
+				<option value="" selected>Buscando el layout...</option>
+				<optgroup label="Películas x 4">
+					<% for (let layout of cnLayouts.filter(n => n.grupoSelect == "prods x 4")) { %>
+						<option value="<%= layout.id %>"><%= layout.nombre %></option>
+					<% } %>
+				</optgroup>
+				<optgroup label="Películas x 20">
+					<% for (let layout of cnLayouts.filter(n => n.grupoSelect == "prods x 20")) { %>
+						<% if (!layout.loginNeces || locals.usuario) { %>
+							<option value="<%= layout.id %>"><%= layout.nombre %></option>
+						<% } %>
+					<% } %>
+				</optgroup>
+				<optgroup label="Películas todas">
+					<% for (let layout of cnLayouts.filter(n => n.grupoSelect == "sin límite")) { %>
+						<% if (!layout.loginNeces || locals.usuario) { %>
+							<option value="<%= layout.id %>"><%= layout.nombre %></option>
+						<% } %>
+					<% } %>
+				</optgroup>
+			</select>
+
+			<!-- Excluye películas con baja calificación -->
+			<div id="bajaCalif" class="checkbox">
+				<input type="checkbox" name="excluyeBC">
+				<p class="mostrarLeyenda"></p>
+			</div>
+
+			<!-- Religiones -->
+			<div id="religiones" class="checkbox flexRow">
+				<% for (const religion of religiones) { %>
+					<input type="checkbox" name="religion" value="<%= religion.id %>" title="<%= religion.nombre %>">
+				<% } %>
+				<p class="mostrarLeyenda"></p>
+			</div>
+		</div>
+		<div id="iconosDelTitulo" class="flexRow">
+			<%- include("CN-Ayuda", {ayudaClass: "compCons", ayudas}) %>
+
+			<!-- Compartir las preferencias -->
+			 <%- include("FM-Compartir", {mostrarLeyenda: "Consulta copiada"}) %>
+
+			<!-- Mostrar filtros -->
+			<div id="toggleFiltrosGlobal" class="iconosAzules scale pointer">
+				<i class="<%= iconos.faSolid %> fa-chevron-right"></i>
+			</div>
+		</div>
+	</div>
+
+	<!-- Contador -->
+	<button id="contadorDeProds" type="text">...</button>
+</section>

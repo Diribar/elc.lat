@@ -1,0 +1,39 @@
+<!-- Zona de Preferencias -->
+<section id="configCons" class="bordeConSombra">
+	<%- include('CN-2Cabecera') %>
+	<%- include('CN-3Filtros') %>
+</section>
+
+<!-- Encabezado + Productos -->
+<section id="encabMasPelis">
+	<!-- Encabezado -->
+	<%- include('CN-1Encabezado') %>
+
+	<!-- Zona de Productos -->
+	<section id="zonaDisponible">
+		<div id="vistaDeResults" class="bordeConSombra">
+			<!-- Zona de scroll -->
+			<div id="scroll">
+				<ul id="botones" type="none"></ul>
+			</div>
+
+			<!-- Telón de fondo, Zona Actualizar -->
+			<img id="telonFondo" src="/imgsPropio/Varios/Cortinas.jpg">
+			<i id="iconoActualizar" class="<%= iconos.faSolid %> fa-rotate-right scale" title="Actualizar"></i>
+
+			<!-- Zona de carteles -->
+			<%- include('MN-CartelProgreso', {tarea: "Esperando los resultados"}) %>
+			<div id="carteles" class="absoluteCentro flexCol">
+				<!-- Carteles -->
+				<button id="noTenemos" class="cartel ocultar">Sin resultados<br>para esa consulta</button>
+				<button id="loginNecesario" class="cartel ocultar">Tenés que estar<br><span><a href="/usuarios/login">logueado</a></span> para<br>usar esta opción</button>
+				<%- include("CN-Cartel1OrdenPPP") %>
+				<%- include("CN-Cartel2UsSinPPP") %>
+				<%- include("CN-Cartel3LoginPend") %>
+				<%- include("CN-Cartel4VerVideo") %>
+			</div>
+		</div>
+	</section>
+
+	<%- include("CMP-4Footer") %>
+</section>

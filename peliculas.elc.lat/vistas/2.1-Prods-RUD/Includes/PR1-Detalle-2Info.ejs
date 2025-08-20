@@ -1,0 +1,50 @@
+<!-- Información -->
+<div id="marcoInfo" class="toggle">
+	<div id="etiquetas" class="flexRow">
+		<button type="button" class="etiqueta resaltar">Sinopsis</button>
+		<button type="button" class="etiqueta">Inform. General</button>
+		<button type="button" class="etiqueta">Actores</button>
+		<!-- Rclvs -->
+		<% for (let i=0; i < asocs.length; i++) if (bloqueIzq[asocs[i]]) { %>
+		<button type="button" class="etiqueta rclv"><%= rclvsNombre[i] %></button>
+		<% } %>
+	</div>
+	<div id="datosInfo">
+		<!-- Sinopsis -->
+		<div id="sinopsis" class="datosParcial">
+			<p><%= registro.sinopsis ? registro.sinopsis : 'No disponemos de esa información' %></p>
+		</div>
+		<!-- Información general -->
+		<div id="masInfo" class="datosParcial" style="display: none">
+			<% if (!bloqueIzq.infoGral.length) { %>
+				<p>No disponemos de esa información</p>
+			<% } else { %>
+				<ul id="infoGral">
+					<% for (let campo of bloqueIzq.infoGral) { %>
+						<li><%- campo.titulo ? (campo.titulo + ': ') : '' %><b><%= campo.valor %></b></li>
+					<% } %>
+				</ul>
+			<% } %>
+		</div>
+		<!-- Actores -->
+		<div id="actores" class="datosParcial" style="display: none">
+			<p><%= bloqueIzq.actores ? bloqueIzq.actores : 'No disponemos de esa información' %></p>
+		</div>
+		<!-- Revisa cada rclv asociado -->
+		<% for (rclv of rclvs) { %>
+			<!-- Acciones si tiene algún rclv asociado -->
+			<% if (bloqueIzq[rclv.asociacion]) { %>
+			<div id="rclv" class="datosParcial" style="display: none">
+				<% bloqueIzq[rclv.asociacion].forEach((campo, num) => { %>
+					<!-- Un párrafo por cada dato -->
+					<p>
+						<% if (bloqueIzq[rclv.asociacion].length > 1 && campo.titulo) { %><%= campo.titulo + ": " %><% } %>
+						<% if (!num) { %><a href="<%= '/' + rclv.entidad + '/detalle/r/?id=' + registro[rclv.campo_id] %>"><b><%= campo.valor %></b></a>
+						<% } else { %><b><%= campo.valor %></b><% } %>
+					</p>
+				<% }) %>
+			</div>
+			<% } %>
+		<% } %>
+	</div>
+</div>

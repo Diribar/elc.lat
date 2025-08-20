@@ -1,0 +1,76 @@
+#encabezado {
+	#tituloPrincipal {
+		&:has(#layoutAyuda select:not(:valid)) {visibility: hidden;}
+		#layoutCheckbox {
+			select {
+				background: var(--verde-oscuro); border: 0.25px solid var(--gris-oscuro); border-bottom-right-radius: 7px;
+				color: var(--amarillo-claro); padding: 3px; max-width: 195px;
+				font-size: 1.1rem; font-weight: bold;
+				optgroup {
+					background: var(--gris-claro); color: var(--gris-oscuro);
+					font-style: italic;
+					option {
+						background: var(--gris-claro); color: var(--azul-oscuro); cursor: pointer;
+						font-style: normal;
+					}
+				}
+			}
+			.checkbox {
+				margin-left: 10px; line-height: 0; position: relative;
+				input {width: 20px; height: 20px; border-radius: 5px;}
+				p.mostrarLeyenda {
+					left: 50%; bottom: -5px; translate: -50% 100%;
+					width: max-content; max-width: 135px; text-wrap: wrap;
+					&:empty {display: none;}
+				}
+			}
+			#religiones {
+				gap: 10px;
+				input {
+					appearance: none; border: 1px solid black;
+					&:checked::after {
+						position: absolute; left: calc(50% - 2px); top: 50%; translate: -50% -50%;
+						content: "✔"; font-size: 1.25rem; font-weight: bold; font-style: italic;
+					}
+				}
+			}
+		}
+		#iconosDelTitulo {
+			margin-top: 15px; align-self: flex-start;
+			.ayuda .ayudaMensForm {
+				p:not(:first-child) {margin-top: 10px; margin-bottom: 0;}
+				ul li {
+					margin-block: 0px 3px; padding: 0;
+				}
+				ul:first-of-type {
+					list-style-type: none;
+					li {
+						margin-left: 5px;
+						span {
+							display: inline-block; width: 1em; height: 1em;
+							margin-bottom: -2px;
+							border: 1px solid var(--colorAyuda); border-radius: 5px;
+						}
+					}
+				}
+				ul:last-of-type li span {color: var(--amarillo-claro); font-variant: small-caps;}
+			}
+			.iconosAzules {
+				display: flex; flex-direction: row; position: relative;
+				width: 25px; height: 25px; border-radius: 50%;
+				justify-content: center; align-items: center; z-index: 0;
+				border: solid 1.5px var(--gris-claro); color: var(--gris-claro); background: var(--azul-oscuro);
+			}
+			#toggleFiltrosGlobal {display: none;} /* Mostrar preferencias */
+		}
+		#layoutCheckbox #religiones input[value="CFC"], #iconosDelTitulo ul li span#CFC {background-color: var(--amarillo-oscuro);}
+		#layoutCheckbox #religiones input[value="MP"], #iconosDelTitulo ul li span#MP {background-color: var(--celeste-oscuro);}
+		#layoutCheckbox #religiones input[value="VPC"], #iconosDelTitulo ul li span#VPC {background-color: var(--verde-intermedio);}
+	}
+
+	#contadorDeProds {
+		padding: 3px 5px; border: solid 2px gray; border-bottom-left-radius: 5px;
+		font-size: 1.1rem; font-weight: bold; width: max-content;
+		align-self: flex-start;
+	}
+}

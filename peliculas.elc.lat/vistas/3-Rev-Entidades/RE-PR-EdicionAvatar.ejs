@@ -1,0 +1,56 @@
+<section id="cuerpoFooter">
+	<div id="cuerpo">
+		<%- include('RE-PR-EdicionAvatarRech') %>
+		<div id="izquierda" class="imagenes">
+			<!-- Imagen sugerida -->
+			<img src="<%= avatar.edic %>" title="Imagen sugerida">
+			<nav class="agregados scaleChildren">
+				<% for (let registro of avatarsExternosPelis) { %>
+					<a href="<%= registro.href %>" target="_blank">
+						<img src="/imgsPropio/2-LogosInfo/BD-<%= registro.codigo %>.jpg" alt="<%= registro.codigo %>" class="scale">
+					</a>
+				<% } %>
+			</nav>
+		</div>
+		<div id="centro" class="contenido flexCol grow spaceBetween alignCenter">
+			<div id="arriba">
+				<div id="tituloPrincipal">
+					<h1 id="titulo"><%= titulo %></h1>
+					<%- include("MN-Ayuda", {mensajes: ["Necesitamos que nos digas si estás de acuerdo con la imagen a evaluar.", "En caso que no, te vamos a pedir que nos digas el motivo."]}) %>
+				</div>
+				<%- include('MN-Timer') %>
+			</div>
+			<div id="medio">
+				<div class="flexRowAlign spaceBetween">
+					<!-- Aceptar la imagen sugerida -->
+					<form id="aprobar" method="POST" class="contOpcionAvatar scale bordeConSombra">
+						<button type="submit" autofocus tabindex="2">
+							<%- include("RE-PR-AvatarEtiq") %>
+						</button>
+					</form>
+					<!-- Preservar la imagen actual -->
+					<div id="mostrarMotivos" class="contOpcionAvatar scale bordeConSombra">
+						<%- include("RE-PR-AvatarEtiq") %>
+					</div>
+				</div>
+				<% if (familia == "producto") { %>
+					<div id="fichaTecnica" class="bordeConSombra">
+						<p><%= entidadNombre %>: <b><%= prodOrig.nombreCastellano %></b></p>
+						<p>Año de estreno: <%= prodOrig.anoEstreno %></p>
+						<p>Dirección: <%= prodOrig.direccion %></p>
+					</div>
+				<% } %>
+				<div id="sectorIconos">
+					<%- include("Iconos-1Estandar") %>
+				</div>
+			</div>
+			<div id="abajo">
+				<%- include('CMP-4Footer', {mostrar: true}) %>
+			</div>
+		</div>
+		<div id="derecha" class="imagenes">
+			<!-- Imagen actual -->
+			<img src="<%= avatar.orig %>" title="Imagen actual">
+		</div>
+	</div>
+</section>

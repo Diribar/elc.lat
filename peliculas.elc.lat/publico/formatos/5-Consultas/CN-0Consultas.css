@@ -1,0 +1,73 @@
+/* Cuerpo */
+#cuerpoFooter #cuerpo {
+	flex-direction: row; max-height: 100%;
+
+	/* Configuración de la consulta */
+	#configCons {display: flex; flex-direction: column; width: 230px; height: 100%;}
+
+	/* Encabezado más películas */
+	#encabMasPelis {
+		display: flex; flex-direction: column; align-items: flex-start; flex-grow: 1;
+		#encabezado {display: flex; flex-direction: row; justify-content: space-between; width: 100%;}
+		#zonaDisponible {
+			display: flex; flex-direction: column; justify-content: center; align-items: center;
+			width: 100%; flex-grow: 1; position: relative;
+			#vistaDeResults {
+				position: absolute;
+				max-height: min(95%, 490px); min-height: min(205px, 90%);
+				min-width: min(350px, 100%); max-width: min(660px, 100%);
+				&:has(li.registro:nth-child(2)) {min-width: min(660px, 100%);}
+				display: flex; flex-direction: column; justify-content: center;
+				border-radius: 15px; overflow: hidden; background: var(--celeste-claro);
+				&:not(:has(#telonFondo.ocultar)) #iconoActualizar {display: none;}
+
+				/* Ícono actualizar */
+				#iconoActualizar {
+					position: absolute; top: 10px; right: 10px;
+					background: var(--verde-oscuro); color: var(--colorAyuda); border-radius: 50%; cursor: pointer;
+					font-size: 0.8rem; padding: 5px 5px 4px 4px;
+				}
+				#carteles .cartel {
+					&.especial {background: var(--verde-claro); color: var(--verde-oscuro); border-color: var(--verde-oscuro);}
+					&#loginNecesario {background: var(--rojo-claro); color: var(--rojo-oscuro); border-color: var(--rojo-oscuro);}
+					&.especial {
+						scale: 1.5; overflow: hidden;
+						#cierra {
+							top: -2px; right: -2px; translate: 0 0; padding: 2px 5px; color: var(--gris-oscuro); scale: 0.8;
+							&:hover {color: snow; background: var(--rojo-oscuro); border-bottom-left-radius: 5px; transition: 700ms;}
+						}
+
+						/* Vista de Resultados - Carteles "Especiales" - Párrafo y Tabla */
+						div {
+							&:not(p) {margin: 10px 0 5px;}
+							p {color: var(--azul-oscuro); margin: 5px 0 10px; font-weight: bold; text-align: center;}
+							table {
+								border-collapse: collapse; margin-left: auto; margin-right: auto;
+								tr td {
+									padding: 2px 0;
+									&:first-of-type {padding-right: 10px;}
+								}
+							}
+						}
+					}
+					span {
+						color: var(--azul-oscuro); font-weight: bold; font-variant: small-caps;
+						cursor: pointer; text-decoration: underline;
+					}
+				}
+
+				#ppp {font-size: 1.25rem;}
+			}
+		}
+		footer {align-self: stretch;}
+	}
+}
+
+/* Cartel - Genérico */
+:is(#vistaDeResults, #imgDerecha) {
+	.cartel {padding: 10px 15px; border-radius: 10px; margin: auto; border: solid 2px;}
+	button.cartel {
+		font-size: 1.5rem; font-weight: bold; font-style: italic;
+		&#cartelRclv {text-wrap: balance;}
+	}
+}

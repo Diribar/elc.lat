@@ -1,0 +1,28 @@
+/* Datos Largos */
+#datos #datosLargos {
+	width: 65%; max-width: 600px;
+	#recuadroDL {
+		#contenido {
+			#informacion {
+					display: flex; flex-direction: row;
+					margin-bottom: 20px;
+					h3 {margin-bottom: 3px;}
+					#comentario {
+						#comenTitulo {
+							display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end;
+							p {margin-bottom: 3px;}
+						}
+						&:has(textarea:read-only) {display: none;}
+						h3 span {font-weight: normal; font-size: 1rem;}
+						p {line-height: 1;}
+						textarea {
+							padding: 10px; border-radius: 8px; resize: none; height: 80px; width: 100%;
+							background: snow; color: inherit;
+						}
+						textarea:read-only {background: var(--gris-intermedio);}
+					}
+			}
+			#sectorIconos {margin: 10px 40px 30px;}
+		}
+	}
+}

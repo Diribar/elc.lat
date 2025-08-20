@@ -1,0 +1,75 @@
+<!-- Íconos de la izquierda -->
+<section id="izquierda">
+	<!-- Menú para Mobile -->
+	<div id="mostrarMenuMobile" class="grupos">
+		<i class="<%= iconos.faSolid %> fa-bars clickIcono iconoHeader"></i>
+		<%- include("HR4-MenuMobile") %>
+	</div>
+	<!-- Consultas -->
+	<a href="/" tabindex="-1" class="grupos ocultarEnMobile">
+		<i class="<%= iconos.faSolid %> <%= iconos.hogar %> scale iconoHeader" title="Consultas"></i>
+	</a>
+	<!-- Búsqueda rápida -->
+	<div id="busquedaRapida" class="grupos">
+		<i
+			class="<%= iconos.faSolid %> fa-magnifying-glass scale clickIcono iconoHeader ocultoMobileParado"
+			title="Búsqueda rápida"
+		></i>
+		<%- include("HR-BusqRapida") %>
+	</div>
+	<!-- Agregar un Producto -->
+	<a href="/producto/agregar-cn" tabindex="-1" class="grupos ocultarEnMobile margenDerecho">
+		<div class="scale iconoComb" title="Agregar una Película">
+			<i class="<%= iconos.faSolid %> <%= iconos.prod %> iconoHeader"></i>
+			<i class="<%= iconos.faSolid %> fa-plus iconoHeader adentro"></i>
+		</div>
+	</a>
+
+	<!-- Tablero de Revisión -->
+	<% if (locals.usuario && usuario.rol.autTablEnts) { %>
+	<a href="/revision/tablero" tabindex="-1" class="grupos ocultarEnMobile">
+		<i class="<%= iconos.faSolid %> <%= iconos.revision %> scale iconoHeader revision" title="Tablero de Revisión"></i>
+	</a>
+	<% } %>
+
+	<!-- Mantenimiento (sólo rol 'permInputs') -->
+	<% if (locals.usuario && usuario.rol.permInputs) { %>
+	<a href="/mantenimiento" tabindex="-1" class="grupos ocultarEnMobile">
+		<i class="<%= iconos.faSolid %> <%= iconos.mantenim %> scale iconoHeader revision" title="Tablero de Mantenimiento"></i>
+	</a>
+	<% } %>
+
+	<!-- Gráficos -->
+	<% if (locals.usuario && usuario.rol.revisorEnts) { %>
+	<div class="grupos ocultarEnMobile">
+		<i
+			class="<%= iconos.faSolid %> <%= iconos.graficos %> scale clickIcono iconoHeader revision"
+			title="Menú de Gráficos"
+		></i>
+		<%- include("HR3-MenuGraficos") %>
+	</div>
+	<% } %>
+
+	<!-- Información de gestión -->
+	<% if (locals.usuario && usuario.rol.revisorEnts) { %>
+	<a href="/movimientos-del-dia" tabindex="-1" class="grupos ocultarEnMobile">
+		<i class="<%= iconos.faSolid %> <%= iconos.detalle %> scale iconoHeader revision" title="Movimientos del Día"></i>
+	</a>
+	<% } %>
+</section>
+
+<!-- Título del Encabezado -->
+<a href="/" id="tituloHeader" tabindex="-1" class="scaleCh">
+	<p>ELC - Películas</p>
+</a>
+
+<!-- Íconos de la derecha -->
+<section id="derecha">
+	<!-- Menú Institucional -->
+	<div class="grupos ocultarEnMobile">
+		<i class="<%= iconos.faSolid %> <%= iconos.instituc %> scale clickIcono iconoHeader" title="Menú Institucional"></i>
+		<%- include("HR1-MenuHome") %>
+	</div>
+	<!-- Usuario -->
+	<div class="grupos"><%- include("HR5-IconoUsuario") %> <%- include("HR5-MenuUsuario") %></div>
+</section>

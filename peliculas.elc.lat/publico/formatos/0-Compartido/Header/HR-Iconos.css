@@ -1,0 +1,34 @@
+/* Íconos */
+header {
+	section .grupos {
+		margin-inline: 12px; position: relative;
+		&.margenDerecho {margin-right: 40px;}
+		.iconoHeader {
+			color: var(--celeste-claro); font-size: 1.8rem; line-height: normal; cursor: pointer;
+			&.revision {color: var(--verde-intermedio);}
+		}
+
+		/* Ícono de agregar producto */
+		.iconoComb {
+			position: relative;
+			.adentro {
+				position: absolute; top: 48%; left: 3px; transform: translateY(-50%);
+				font-size: 1rem; color: var(--azul-oscuro);
+			}
+		}
+
+	}
+
+	/* Icono de movie */
+	#imagenConsultas {height: 2.5rem; width: 2.5rem; cursor: pointer; border-radius: 50%; overflow: hidden;}
+
+	/* Íconos de usuario */
+	#iconoUsuario {
+		border-radius: 50%; overflow: hidden;
+		#imagenUsuario {height: 3rem; width: 3rem; cursor: pointer;}
+	}
+
+	/* Imágenes */
+	:is(#imagenConsultas, #imagenUsuario) img {height: 100%; width: 100%; object-fit: cover;}
+}
+

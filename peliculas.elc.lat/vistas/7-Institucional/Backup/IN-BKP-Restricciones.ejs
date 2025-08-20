@@ -1,0 +1,12 @@
+<div class="bloque">
+	<h2>Películas que omitimos</h2>
+	<ul type="disc">
+		<li>Limitamos el catálogo de películas a aquellas que no están en conflicto con la tradición de la Iglesia Católica.</li>
+		<li>Además, buscamos que no tengan estos desvíos:</li>
+		<ul>
+			<% for (let motivo of motivosBlandos) { %>
+			<li><em><%= motivo %>.</em></li>
+			<% } %>
+		</ul>
+	</ul>
+</div>

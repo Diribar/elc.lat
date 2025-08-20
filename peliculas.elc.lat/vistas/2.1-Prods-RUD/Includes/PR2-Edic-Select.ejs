@@ -1,0 +1,23 @@
+<% const campo = camposDA.find(n => n.nombre == nombre) %>
+<% const {titulo, valores, angosto} = campo %>
+<section class="labelInput">
+	<label><%= titulo %></label>
+	<div class="inputError">
+		<!-- Input -->
+		<select name="<%= nombre %>" class="input <%= angosto ? 'angosto ' : '' %>">
+			<option value="" <% if (!registro[nombre]) { %>selected<% } %>>Elejí<% if (!angosto) { %> una opción<% } %></option>
+			<% for (let valor of valores) { %>
+				<option value="<%= valor.id %>" <% if (registro[nombre] == valor.id) { %>selected<% } %>>
+					<%= valor.nombre %>
+				</option>
+			<% } %>
+		</select>
+
+		<% if (!campo.mensajes) campo.mensajes = (campo.entidad == "peliculas") ? campo.mensajePeli : campo.mensajeColec %>
+		<% if (campo.mensajes) { %><%- include("MN-Ayuda", {mensajes: campo.mensajes}) %><% } %>
+
+		<%- include("MN-Errores", {nombre, ocultarOK: true}) %>
+		<!-- Aviso de cambio en el data-entry -->
+		<i class="<%= iconos.faSolid %> <%= iconos.edicionCambiada %> ocultar"></i>
+	</div>
+</section>

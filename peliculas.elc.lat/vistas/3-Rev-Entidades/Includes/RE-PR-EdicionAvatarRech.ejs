@@ -1,0 +1,19 @@
+<!-- Rechazo -->
+<form method="POST" id="cartelRechazo" class="ocultar absoluteCentro" action="<%= urlActual %>&rechazar=true">
+	<h2>Gracias.</h2>
+	<p><em>Por favor explicanos el motivo<br>por el que rechazás la sugerencia</em></p>
+	<select name="motivo_id">
+		<option value="" selected>Elegí una opción</option>
+		<% for (motivo of motivos) { %>
+		<option value="<%= motivo.id %>"><%= motivo.descripcion %></option>
+		<% } %>
+	</select>
+	<div id="sectorIconos">
+		<div class="iconos">
+			<i class="<%= iconos.faSolid %> <%= iconos.izquierda %>" title="Cancelar"></i>
+			<button type="submit" class="inactivo">
+				<i class="<%= iconos.faSolid %> <%= iconos.derecha %> rechazar" title="Rechazar"></i>
+			</button>
+		</div>
+	</div>
+</form>

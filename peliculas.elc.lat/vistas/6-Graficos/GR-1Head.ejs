@@ -1,0 +1,12 @@
+<!-- General -->
+<link rel="stylesheet" href="/formsPropio/6-Graficos/GR-Graficos.css">
+<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-0MediaQuery.css">
+<link rel="stylesheet" href="/formsPropio/6-Graficos/GR-MediaQuery.css">
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="/jsPropio/6-Graficos/GR-0general.js"></script>
+
+<% for (let codGrafico in graficos) { %>
+	<% if (codGrafico == codigo) { %>
+		<script src="/jsPropio/6-Graficos/GR-<%= codGrafico %>.js"></script>
+	<% } %>
+<% } %>

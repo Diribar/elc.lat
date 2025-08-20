@@ -1,0 +1,16 @@
+<form id="cuerpoFooterImgDer" method="POST" enctype="multipart/form-data">
+	<section id="cuerpoFooter">
+		<div id="cuerpo">
+			<%- include('MN-Timer') %>
+			<div id="tituloPrincipal">
+				<h1 id="titulo"><%= locals.tituloVista %></h1>
+				<%- include("MN-Ayuda", {mensajes: ["Recordá guardar los cambios para que queden efectivos", "Para guardar los cambios, es necesario que no haya ningún error (<i class='fa-solid fa-circle-xmark'></i>).", "Se pueden guardar los cambios, aunque no se hayan resuelto todas las advertencias (<i class='fa-solid fa-triangle-exclamation'></i>).", "Si no tenés experiencia completando los campos que tienen ícono de ayuda, por favor consultalos.", "Al terminar, te pedimos que vayas a la vista <em>Detalle</em> para liberarlo."]}) %>
+			</div>
+			<div id="datos">
+				<%- include('PR2-Edicion1-Datos') %>
+			</div>
+		</div>
+		<%- include('CMP-4Footer') %>
+	</section>
+	<%- include("PR2-Edicion2-Avatar") %>
+</form>

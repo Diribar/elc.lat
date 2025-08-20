@@ -1,0 +1,37 @@
+/* Cuerpo */
+#cuerpoFooter #cuerpo {
+	flex-direction: column;
+	section {
+		display: flex; flex-direction: row; flex-grow: 1; align-items: center;
+		max-height: calc(100% - var(--altoTituloPrincipal));
+		#cuadroDeTexto {
+			display: flex; flex-direction: column; overflow-y: hidden;
+			background: var(--gris-claro); border: 2px solid var(--azul-frances);
+			border-radius: 20px; box-shadow: 0px 0px 20px var(--azul-oscuro);
+			margin: auto;
+			max-width: var(--anchoMax);
+			font-size: calc(1rem * var(--escala));
+
+			#contenido {
+				.bloque > ul > li {margin-top: 8px; font-size: 1.1em; color: var(--marron);}
+				h2 {font-size: 1.2em;}
+				li {line-height: 1.2em;}
+			}
+
+			/* Iconos */
+			.iconos {
+				margin-top: 20px; padding-right: 15px;
+				display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;
+				i {font-size: 2em;}
+			}
+
+			/* Miscelaneas */
+			& > div {
+				&::-webkit-scrollbar {outline: transparent;}
+				&::-webkit-scrollbar-track {background: var(--gris-intermedio); border-radius: 10px; border-left: 5px;}
+				&::-webkit-scrollbar-thumb {background: var(--gris-oscuro); border-radius: 10px;}
+			}
+
+		}
+	}
+}

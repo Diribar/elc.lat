@@ -1,0 +1,21 @@
+#dataEntry {
+	/* General */
+	display: flex; flex-direction: column; max-width: 80%;
+	background: var(--verde-claro); color: var(--verde-oscuro); border: var(--verde-oscuro) 7px solid;
+
+	/* Título */
+	#gracias {margin-bottom: 20px; height: 80px; border-radius: 10px; align-self: center;}
+
+	/* Texto */
+	#datos {
+		padding-left: 20px;
+		.texto {margin: 10px 0 5px; font-size: 1.2rem;}
+		.ayudaIconoForm {margin-left: 5px;}
+		.ayudaIconoForm .ayudaMensForm #subPuntos li {padding-top: 0;}
+		#capitulos {background: var(--verde-oscuro); width: fit-content; padding: 1px 5px; border-radius: 5px;}
+		#capitulos span {color: var(--gris-claro);}
+	}
+
+	/* Iconos */
+	.iconos {margin-top: 30px;}
+}

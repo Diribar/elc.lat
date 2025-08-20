@@ -1,0 +1,86 @@
+<!-- General -->
+<link rel="stylesheet" href="/formsPropio/3-Rev-Entidades/RE-0-Revision.css">
+
+<% if (codigo == "tableroControl") { %>
+	<!-- TABLERO -->
+	<link rel="stylesheet" href="/formsPropio/0-Compartido/Main/MN-TableroControl.css">
+	<link rel="stylesheet" href="/formsPropio/3-Rev-Entidades/RE-0-TableroControl.css">
+	<script src="/jsPropio//3-Rev-Entidades/RE-0-TableroControl.js"></script>
+	<% if (tema == "revisionEnts") { %>
+		<script src="/jsPropio/3-Rev-Entidades/RE-0-UnaSolaPestana.js"></script>
+		<script src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="/jsPropio/6-Graficos/GR-0general.js"></script>
+		<script src="/jsPropio/6-Graficos/GR-linksVencim.js"></script>
+	<% } %>
+
+<% } else { %>
+	<% if (["alta/p", "rechazar", "inactivar", "recuperar", "edicion"].includes(codigo)) { %>
+		<link rel="stylesheet" href="/formsPropio/0-Compartido/Main/MN-DatosBreves.css">
+	<% } %>
+	<% if (["alta/p", "rechazar", "inactivar", "recuperar", "abmLinks", "edicion"].includes(codigo)) { %>
+		<!-- Compartido -->
+		<link rel="stylesheet" href="/formsPropio/0-Compartido/Main/MN-Iconos.css">
+		<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-1Encabezado.css">
+		<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-Detalle.css">
+		<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-0MediaQuery.css">
+
+		<% if (codigo == "alta/p") { %>
+			<!-- Prod-Altas - Particular -->
+			<link rel="stylesheet" href="/formsPropio/2.1-Prods-RUD/PR-0CRUD.css">
+			<link rel="stylesheet" href="/formsPropio/2.1-Prods-RUD/PR-1Detalle.css">
+			<link rel="stylesheet" href="/formsPropio/2.1-Prods-RUD/PR-1Detalle1-Laptop.css">
+			<script src="/jsPropio/2.1-Prods-RUD/PR1-Detalle-Etiquetas.js"></script>
+			<script src="/jsPropio/2.1-Prods-RUD/PR1-Detalle-Actores.js"></script>
+
+		<% } else if (codigo == "rechazar") { %>
+			<!-- Rechazos - Particular -->
+			<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-PR-DatosLargos.css">
+			<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-PR-ElegirMotivo.css">
+			<script src="/jsPropio/2.0-Familias/FM-PR-ElegirMotivo.js"></script>
+
+		<% } else if (["inactivar", "recuperar"].includes(codigo)) { %>
+			<!-- Revisión de Inactivar o Recuperar - Particular -->
+			<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-PR-DatosLargos.css">
+			<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-PR-HistorialStatus.css">
+			<script src="/jsPropio/3-Rev-Entidades/RE-PR-InacRecup.js"></script>
+
+		<% } else if (codigo == "edicion") { %>
+			<!-- Ediciones - Particular -->
+			<link rel="stylesheet" href="/formsPropio/3-Rev-Entidades/RE-PR-Edicion.css">
+			<script src="/jsPropio/3-Rev-Entidades/RE-PR-Edicion.js"></script>
+
+		<% } else if (codigo == "abmLinks") { %>
+			<!-- Links - Uso compartido -->
+			<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-LK-ABM.css">
+			<link rel="stylesheet" href="/formsPropio/2.3-Links/LK-Iframes.css" />
+			<!-- <script src="/jsPropio/2.0-Familias/FM-Links-PeliTrailer.js"></script> -->
+			<script src="/jsPropio/2.3-Links/LK-Iframes.js"></script>
+			<script src="/jsPropio/2.1-Prods-RUD/PR4-Preferencias-Pers.js"></script>
+
+			<!-- Links - Específico -->
+			<script src="/jsPropio/3-Rev-Entidades/RE3-Link1-AltasBajas.js"></script>
+			<script src="/jsPropio/3-Rev-Entidades/RE3-Link2-Ediciones.js"></script>
+
+		<% } %>
+	<% } else if (codigo == "edicion/avatar") { %>
+		<!-- Prod-Avatar -->
+		<link rel="stylesheet" href="/formsPropio/0-Compartido/Main/MN-Iconos.css">
+		<link rel="stylesheet" href="/formsPropio/3-Rev-Entidades/RE-PR-EdicionAvatar.css">
+		<link rel="stylesheet" href="/formsPropio/3-Rev-Entidades/RE-PR-EdicionAvatarRech.css">
+		<script src="/jsPropio/3-Rev-Entidades/RE-PR-EdicionAvatar.js"></script>
+		<script src="/jsPropio/3-Rev-Entidades/RE-PR-EdicionAvatarRech.js"></script>
+
+	<% } else if (codigo == "alta/r" || codigo == "solapamiento") { %>
+		<!-- Rclv-Altas / Solapamiento -->
+		<link rel="stylesheet" href="/formsPropio/0-Compartido/Main/MN-Iconos.css">
+		<link rel="stylesheet" href="/formsPropio/2.0-Familias/FM-PR-EdicionAvatar.css">
+		<link rel="stylesheet" href="/formsPropio/2.2-RCLVs/RCLV-AltaEdicion.css">
+		<link rel="stylesheet" href="/formsPropio/0-Compartido/Main/MN-DatosBreves.css">
+		<% if (codigo == "alta/r") { %>
+			<script src="/jsPropio/2.2-RCLVs/RCLV-AltaEdicion.js"></script>
+		<% } else if (codigo == "solapamiento") { %>
+			<script src="/jsPropio/3-Rev-Entidades/RE2-RCLV-Solapam.js"></script>
+		<% } %>
+
+	<% } %>
+<% } %>

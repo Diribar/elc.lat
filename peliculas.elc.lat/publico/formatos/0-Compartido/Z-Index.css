@@ -1,0 +1,29 @@
+/* Máxima prioridad */
+main #todoElMain:has(video) {z-index: 14;}
+header, footer {z-index: 13;}
+main :where(#cartelProgreso, .encimaDelFondo) {z-index: 12;}
+main #cuerpo #cartelRechazo {z-index: 12;}
+main #todoElMain {z-index: 11;}
+
+/* Header */
+header .menuForm {z-index: 2;}
+header .iconoComb .adentro {z-index: 1;}
+
+/* Todo el main */
+main #todoElMain #cierraVideo {z-index: 1;}
+
+/* Cuerpo */
+main #cuerpo #configCons {z-index: 10;}
+main #cuerpo :where(#tituloPrincipal, #datosPerennesTitulo) {z-index: 9;}
+main #cuerpo #tituloSecundario {z-index: 8;}
+main #cuerpo #primeraColumna {z-index: 7;}
+main #cuerpo :where(.ayuda, #centro #medio, .inputError #mostrarPaises, #encabMasPelis #contadorDeProds) {z-index: 1;}
+
+/* Ayuda */
+main #cuerpo .inputError .ayuda .ayudaMensForm, .ayudaMensForm {z-index: 5;}
+main #cuerpo .inputError .ayuda {z-index: 3;}
+
+/* Errores */
+main #cuerpo .errores .mensajeError {z-index: 7;}
+main #cuerpo .inputError .errores {z-index: 6}
+main #cuerpo form #imgDerecha .errores {z-index: 4;}

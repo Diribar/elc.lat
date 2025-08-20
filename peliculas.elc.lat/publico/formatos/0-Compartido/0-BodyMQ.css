@@ -1,0 +1,13 @@
+body {
+	--altoFooter: 25.4px;
+	/* Acostados */
+	@media (orientation: landscape) {
+		--alturaViewPort: 100vh;
+		@media (width <= 950px) {
+			--altoFooter: 0px;
+			#cuerpoFooterImgDer footer {display: none;}
+		}
+	}
+	/* Parado */
+	@media (orientation: portrait) {--alturaViewPort: 100svh;}
+}

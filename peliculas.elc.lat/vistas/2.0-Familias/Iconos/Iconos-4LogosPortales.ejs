@@ -1,0 +1,19 @@
+<% if (familia == "producto" && ["alta/p", "edicion"].includes(codigo)) { %>
+	<!-- Logo de Portales de información de Películas -->
+	<style>
+		#logoPortales a.logos img {width: 27px; height: 27px; object-fit: contain;}
+		#logoPortales a.logos.true img {border: 3px solid var(--verde-oscuro)}
+	</style>
+	<div id="logoPortales" class="iconos">
+		<% for (let datosProv of datosProvs) { %>
+			<a class="logos" href="//<%= datosProv.href %>" target="_blank" tabindex="-1">
+				<img src="/imgsPropio/2-LogosInfo/BD-<%= datosProv.src %>.jpg" title="<%= datosProv.title %>">
+			</a>
+		<% } %>
+		<!-- TMDB -->
+		<% tmdb = registro.nombreOriginal ? "search?language=es&query=" + registro.nombreOriginal : "" %>
+		<a class="logos <%= registro.fuente=='TMDB' %>" href="//themoviedb.org/<%= tmdb %>" target="_blank" tabindex="-1">
+			<img src="/imgsPropio/2-LogosInfo/BD-TMDB.jpg" title="The Movie Database">
+		</a>
+	</div>
+<% } %>

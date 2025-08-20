@@ -1,0 +1,32 @@
+/* Aspectos generales */
+#dataEntry {
+	min-height: 180px;
+	#tituloSecundario {margin-bottom: 20px;}
+
+	/* Partes específicas del formulario */
+	#datos {
+		.inputError {
+			input {
+				width: 250px; padding: 5px 5px;
+				&::selection {background-color: var(--gris-oscuro); color: snow;}
+			}
+			.ayudaMensForm {max-width: none;}
+		}
+
+		/* Submit button */
+		#botonSubmit {
+			align-self: center; padding: 2px 8px; border-radius: 15px;
+			font-size: 1.2rem; font-weight: bold; line-height: normal;
+			&.verdeOscuro {background: var(--verde-oscuro); color: snow;}
+			&.verdeClaro {background: var(--verde-claro); color: var(--verde-oscuro); border: 3px solid var(--verde-oscuro);}
+		}
+	}
+	#cartelProgreso {
+		border: none; padding: 0; top: 2px; left: 0; translate: none;
+		#contorno {
+			width: 250px; background-color: var(--verde-claro); border: var(--verde-oscuro) solid 1.5px;
+			#progreso {background-color: var(--verde-oscuro);}
+		}
+	}
+	#fuentesDeInfo {margin: 10px 0 0 15px; font-style: italic;}
+}

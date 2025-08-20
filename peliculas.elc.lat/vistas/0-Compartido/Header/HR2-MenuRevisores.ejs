@@ -1,0 +1,23 @@
+<div class="clickVista menuForm menuFondo ocultar">
+	<% if (usuario.rol.autTablEnts) { %>
+		<!-- Tablero de Revisión -->
+		<a href="/revision/tablero" class="menuOpcion">
+			<i class="<%= iconos.faSolid %> <%= iconos.prod %> icono"></i>
+			<span>Tablero de Revisión</span>
+		</a>
+		<!-- Mantenimiento -->
+		<a href="/mantenimiento" class="menuOpcion">
+			<i class="<%= iconos.faSolid %> fa-tools icono"></i>
+			<span>Tablero de Mantenimiento</span>
+		</a>
+	<% } %>
+
+	<% if (usuario.rol.revisorUs && false) { %>
+		<hr>
+		<!-- Tablero de Usuarios -->
+		<a href="/revision-us/tablero" class="menuOpcion">
+			<i class="<%= iconos.faSolid %> fa-user-check icono"></i>
+			<span>Tablero de Usuarios</span>
+		</a>
+	<% } %>
+</div>

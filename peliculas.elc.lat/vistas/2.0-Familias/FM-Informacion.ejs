@@ -1,0 +1,28 @@
+<!-- Información -->
+<div id="informacion" class="<%= codigo %>">
+    <% if (false) { %>
+
+    <!-- PRODUCTO -->
+    <% } else if (tema == "prodRud" && codigo == "detalle" || tema == "revisionEnts" && codigo == "alta/p") { %><%- include("PR1-Detalle") %>
+    <% } else if (tema == "prodRud" && codigo == "califica") { %><%- include("PR3-Calificar") %>
+    <% } else if (tema == "prodRud" && codigo == "ordenaCaps") { %><%- include("PR4-OrdenaCaps") %>
+
+    <!-- RCLV -->
+    <% } else if (tema == "rclvCrud" || tema == "revisionEnts" && codigo == "alta/r") { %><%- include("RCLV-1DT-Largos") %>
+
+    <!-- AMBOS -->
+    <% } else if (tema == "revisionEnts" && codigo == "edicion") { %><%- include("RE-PR-Edic-Largos") %>
+    <% } else if (tema == "fmCrud" && ["inactivar", "cambiarMotivo"].includes(codigo) || tema == "revisionEnts" && codigo == "rechazar") { %><%- include("FM-PR-ElegirMotivo") %>
+    <% } else if (tema == "fmCrud" && ["recuperar", "eliminar", "corregirStatus", "historial"].includes(codigo) || tema == "revisionEnts" && ["inactivar", "recuperar"].includes(codigo)) { %><%- include("FM-PR-HistorialStatus") %>
+
+    <!-- Fin -->
+    <% } %>
+</div>
+
+<!-- Botones -->
+<div id="sectorIconos">
+    <%- include("Iconos-1Estandar") %>
+    <%- include("Iconos-2ProdRUD") %>
+    <%- include("Iconos-3CambioStatus") %>
+    <%- include("Iconos-4LogosPortales") %>
+</div>

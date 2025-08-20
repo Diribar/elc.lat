@@ -1,0 +1,27 @@
+<% const campo = camposDA.find(n => n.nombre == nombre) %>
+<% const {titulo, valores} = campo %>
+<section id="<%= nombre %>" class="labelSelect">
+	<div><b><%= titulo %></b></div>
+	<div class="inputError">
+		<!-- Input -->
+		<select name="<%= nombre %>" class="input" autofocus>
+			<optgroup label="Casos Puntuales">
+				<% for (let valor of valores.filter(n => n.id < 10)) { %>
+					<option value="<%= valor.id %>" class="rclv" <% if (dataEntry[nombre] == valor.id) { %>selected<% } %>><%= valor.nombre %></option>
+				<% } %>
+			</optgroup>
+			<optgroup label="Listado General">
+				<% for (let valor of valores.filter(n => n.id > 10)) { %>
+					<option value="<%= valor.id %>" class="rclv" <% if (dataEntry[nombre] == valor.id) { %>selected<% } %>><%= valor.nombre %></option>
+				<% } %>
+			</optgroup>
+		</select>
+
+		<% if (!campo.mensajes) campo.mensajes = (campo.entidad == "peliculas") ? campo.mensajePeli : campo.mensajeColec %>
+		<% if (campo.mensajes) { %><%- include("MN-Ayuda", {mensajes: campo.mensajes}) %><% } %>
+
+		<!-- Link a Relación con la vida -->
+		<i class="<%= iconos.faSolid %> <%= iconos.agregar %> linkRclv alta <%= nombre %>" title='Agregar "<%= titulo.toLowerCase() %>"'></i>
+		<i class="<%= iconos.faSolid %> fa-square-pen linkRclv edicion ocultar <%= nombre %>" title='Editar "<%= titulo.toLowerCase() %>"'></i>
+	</div>
+</section>

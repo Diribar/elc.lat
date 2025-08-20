@@ -1,0 +1,16 @@
+<div id="menuCapacitac" class="clickVista menuForm menuFondo ocultar menuDerecha">
+	<% for (const menu of menuCapacitac) { %>
+		<% // Revisa si se necesita algún permiso para mostrar el menú %>
+		<% for (const permiso of rolesUs.map(n => n.codigo)) { %>
+			<% if (menu[permiso] && (!locals.usuario || !usuario.rol[permiso])) { continue } %>
+		<% } %>
+
+		<% if (menu.hr) { %><hr><% } %>
+
+		<p id="<%= menu.codigo %>" class="menuOpcion pointer">
+			<i class="<%= iconos.faSolid %> <%= menu.icono %> icono"></i>
+			<span><%= menu.titulo %></span>
+		</p>
+
+	<% } %>
+</div>

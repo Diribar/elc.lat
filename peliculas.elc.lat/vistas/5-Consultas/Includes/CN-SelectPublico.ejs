@@ -1,0 +1,17 @@
+<% const {codigo, titulo, opciones} = campo %>
+<% const esPublico = codigo == "publicos" %>
+<div id="<%= codigo %>" class="pref contSelect ocultaFiltro">
+	<select name="<%= codigo %>" class="<%= locals.eventual ? codigo : 'presenciaEstable' %> prefSimple">
+		<optgroup label="Agrupadas">
+			<% for (let opcion of opciones.filter(n=>!n.indiv)) { %>
+				<option value="<%= opcion.id %>" title="hola"><%= opcion.nombre %></option>
+			<% } %>
+		</optgroup>
+		<optgroup label="Individuales">
+			<% for (let opcion of opciones.filter(n=>n.indiv)) { %>
+				<option value="<%= opcion.id %>"><%= opcion.nombre %></option>
+			<% } %>
+		</optgroup>
+	</select>
+	<%- include("MN-Ayuda", {mensajes: msjsPublRecom}) %>
+</div>

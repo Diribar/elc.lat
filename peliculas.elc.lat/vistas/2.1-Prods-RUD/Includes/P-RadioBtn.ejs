@@ -1,0 +1,12 @@
+<section class="inputError flexRowAlign altoFila">
+	<label id="radioBtnTitulo" class="negrita"><%= titulo %></label>
+	<div class="radioBtnOpcs flexRowAlign<%- locals.prodEdic ? ' relative' : '' %>">
+		<label class="flexRowAlign"><input type="radio" name="<%= nombre %>" value="1" <% if (dataEntry[nombre] == 1) { %>checked<% } %>>SI</label>
+		<label class="flexRowAlign"><input type="radio" name="<%= nombre %>" value="0" <% if ((locals.camposDE && camposDE.includes(nombre) || locals.prodEdic) && dataEntry[nombre] == 0) { %>checked<% } %>>NO</label>
+		<% if (locals.prodEdic) { %>
+			<!-- Aviso de cambio en el data-entry -->
+			<i class="<%= iconos.faSolid %> <%= iconos.edicionCambiada %> ocultar"></i>
+		<% } %>
+	</div>
+	<%- include("MN-Errores", {nombre, ocultarOK: true}) %>
+</section>

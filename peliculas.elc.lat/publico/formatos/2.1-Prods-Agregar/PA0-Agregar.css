@@ -1,0 +1,24 @@
+/* Formato del cuerpo */
+#cuerpo {display: flex; flex-direction: column; flex-grow: 1;}
+#tituloPrincipal #titulo {max-width: 99vw;}
+
+/* Formato del formulario */
+#cuerpo #dataEntry {margin: auto;}
+#cuerpo #dataEntry {padding: 30px 40px; border-radius: 20px;}
+#cuerpo #dataEntry {background: var(--gris-claro); border: var(--gris-oscuro) 7px solid; box-shadow: 0px 0px 10px rgb(100, 100, 100);}
+
+/* Partes específicas del formulario */
+#dataEntry #tituloSecundario h2 {color: white; background: var(--azul-oscuro);}
+#dataEntry #tituloSecundario h2 {padding: 5px 10px; border-radius: 10px;}
+#dataEntry h3 {margin: 15px 0 3px; align-self: flex-start;}
+#dataEntry input, #dataEntry textArea, #dataEntry select {border-width: .7px; border-radius: 5px;}
+#dataEntry input:disabled, #dataEntry select:disabled, #dataEntry textarea:disabled {background: var(--amarillo-claro); opacity: 1;}
+#dataEntry input, #dataEntry select, #dataEntry textarea {background: white;}
+#dataEntry textarea {resize:vertical; max-height: 100px; min-height: 22px;}
+
+/* Procesando información */
+#dataEntry #resultado {margin-top: 5px; padding-top: 3px; padding-bottom: 3px; width: fit-content;}
+#dataEntry #resultado {font-style: normal; border-radius: 10px;}
+
+/* Submit button */
+#dataEntry button em {color: inherit; background: inherit;}
