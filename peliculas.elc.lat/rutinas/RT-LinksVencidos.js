@@ -2,7 +2,7 @@
 // Variables
 const puppeteer = require("puppeteer");
 const procsFM = require("../rutasContrs/2.0-Familias/FM-FN-Procesos");
-const googleApiKey = "AIzaSyDjyAUXkqlwPM7kyjXy95XoFJQGfNoy6LQ";
+const apiKey = require("../variables/API-keys").google;
 const motivoVideoNoDisp_id = 31;
 
 module.exports = {
@@ -101,7 +101,7 @@ module.exports = {
 	},
 	porLinkYT: async (videoId) => {
 		// Variables
-		const url = `https://www.googleapis.com/youtube/v3/videos?part=status&id=${videoId}&key=${googleApiKey}`;
+		const url = `https://www.googleapis.com/youtube/v3/videos?part=status&id=${videoId}&key=${apiKey}`;
 
 		// Validaciones
 		try {
@@ -115,10 +115,7 @@ module.exports = {
 			// Verifica si es una lectura con el formato esperado
 			const data = await response.json();
 			const items = data.items;
-			if (items.length == 0) {
-				console.log("Sin acceso al sitio - items.length == 0");
-				return {sinAccesoAlSitio: true};
-			}
+			if (!items.length) return {linkOk: false}; // video no disponible
 
 			// Verifica el status
 			const status = items[0].status;

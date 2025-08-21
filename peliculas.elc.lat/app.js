@@ -30,7 +30,7 @@ global.urlHost = entProducc
 	? "https://peliculas.elc.lat"
 	: entPrueba
 	? "https://peliculas2.elc.lat"
-	: "https://peliculas.elc.lat:3001";
+	: "https://peliculas.elc:3001";
 
 // Listener
 const puerto = entProducc ? 4210 : entPrueba ? 4207 : 3001;
