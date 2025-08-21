@@ -115,10 +115,7 @@ module.exports = {
 			// Verifica si es una lectura con el formato esperado
 			const data = await response.json();
 			const items = data.items;
-			if (items.length == 0) {
-				console.log("Video no disponible - " + videoId);
-				return {linkOk: false};
-			}
+			if (!items.length) return {linkOk: false}; // video no disponible
 
 			// Verifica el status
 			const status = items[0].status;
