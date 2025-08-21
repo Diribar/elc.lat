@@ -18,11 +18,6 @@ app.use(express.json()); // ¿Para usar JSON con la lectura y guardado de archiv
 const cookies = require("cookie-parser");
 app.use(cookies());
 
-// Para permitir acceso desde otros dominios
-const cors = require("cors");
-const origin = "https://peliculas.evangelicemoslacultura.com" + (entDesarr ? ":3006" : "");
-app.use(cors({origin, credentials: true}));
-
 // Variables que toman valores de 'path'
 const entProducc = global.path.basename(__dirname) == "1-Actual";
 global.entPrueba = global.path.basename(__dirname) == "2-Prueba";
@@ -35,7 +30,7 @@ global.urlHost = entProducc
 	? "https://peliculas.elc.lat"
 	: entPrueba
 	? "https://peliculas2.elc.lat"
-	: "https://peliculas.elc.lat:3001";
+	: "https://peliculas.elc:3001";
 
 // Listener
 const puerto = entProducc ? 4210 : entPrueba ? 4207 : 3001;
