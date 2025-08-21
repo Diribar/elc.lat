@@ -116,8 +116,8 @@ module.exports = {
 			const data = await response.json();
 			const items = data.items;
 			if (items.length == 0) {
-				console.log("Sin acceso al sitio - items.length == 0");
-				return {sinAccesoAlSitio: true};
+				console.log("Video no disponible - " + videoId);
+				return {linkOk: false};
 			}
 
 			// Verifica el status
