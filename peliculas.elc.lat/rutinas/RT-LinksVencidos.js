@@ -2,7 +2,7 @@
 // Variables
 const puppeteer = require("puppeteer");
 const procsFM = require("../rutasContrs/2.0-Familias/FM-FN-Procesos");
-const googleApiKey = "AIzaSyDjyAUXkqlwPM7kyjXy95XoFJQGfNoy6LQ";
+const apiKey = require("../variables/API-keys").google;
 const motivoVideoNoDisp_id = 31;
 
 module.exports = {
@@ -101,7 +101,7 @@ module.exports = {
 	},
 	porLinkYT: async (videoId) => {
 		// Variables
-		const url = `https://www.googleapis.com/youtube/v3/videos?part=status&id=${videoId}&key=${googleApiKey}`;
+		const url = `https://www.googleapis.com/youtube/v3/videos?part=status&id=${videoId}&key=${apiKey}`;
 
 		// Validaciones
 		try {

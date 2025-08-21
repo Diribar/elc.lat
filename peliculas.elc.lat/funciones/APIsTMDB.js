@@ -1,5 +1,5 @@
 "use strict";
-const apiKey = "e90d1beb11c74cdf9852d97a354a6d45";
+const apiKey = require("../variables/API-keys").tmdb;
 
 module.exports = {
 	search: async (palabrasClave, TMDB_entidad, page) => {
