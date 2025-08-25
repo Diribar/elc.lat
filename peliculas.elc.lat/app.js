@@ -46,9 +46,10 @@ app.use((req, res) => {
 			if (email) req.originalUrl += "&email=" + email;
 			if (!clienteYaMigrado) res.cookie("clienteYaMigrado", true, {maxAge: 1000 * 60 * 60 * 24 * 30});
 		}
-	} else req.originalUrl += caracter + "cliente_id=" + cliente_id;
-	// return res.send(req.cookies);
+	} else req.originalUrl += caracter + "sinCookie=true";
 
 	// Redirige a 'peliculas.evangelicemoslacultura'
+	// req.originalUrl += "&sinCookie=true"
+	// return res.send(req.cookies);
 	return res.redirect(urlHost + req.originalUrl);
 });
