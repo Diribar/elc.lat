@@ -8,7 +8,7 @@ const entPrueba = carpeta == "2-Prueba";
 const entDes = !entProd && !entPrueba;
 
 // Host
-global.urlHost = !entDes ? "https://peliculas.elc.lat" : "http://localhost:3001";
+global.urlHost = entProd ? "https://peliculas.elc.lat" : entPrueba ? "https://peliculas2.elc.lat" : "http://peliculas.elc:3001";
 if (!entDes) global.dominio = {domain: "elc.lat"};
 
 // Otros requires
@@ -21,7 +21,7 @@ app.use(cookies());
 
 // Para conectarse con el servidor
 const puerto = entProd ? 4204 : entPrueba ? 4201 : 80;
-app.listen(puerto, () => console.log("\n\ELC Redirecciona - Servidor funcionando..."));
+app.listen(puerto, () => console.log("\nELC Redirecciona - Servidor funcionando..."));
 
 // Redirige
 const unaHora = 60 * 60 * 1000;

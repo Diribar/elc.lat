@@ -10,11 +10,10 @@
 	"license": "ISC",
 	"dependencies": {
 		"cookie-parser": "^1.4.7",
-		"express": "^4.21.1",
-		"npm": "^10.8.2"
+		"express": "^4.21.1"
 	},
 	"devDependencies": {
-		"nodemon": "^3.0.1"
+		"nodemon": "^3.1.10"
 	},
 	"repository": {
 		"type": "git",
