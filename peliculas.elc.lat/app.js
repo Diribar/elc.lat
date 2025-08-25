@@ -34,9 +34,20 @@ if (entDesarr) {
 
 // Redirige
 app.use((req, res) => {
+	// Variables
+	const {cliente_id, email, clienteYaMigrado} = req.cookies;
+	const {pideCookies} = req.query;
+	const caracter = Object.keys(req.query).length ? "&" : "?";
+
 	// Obtiene las cookies para que sean compartidas
-	if (req.cookies && req.cookies.email) req.originalUrl += "&email=" + req.cookies.email;
-	if (req.cookies && req.cookies.cliente_id) req.originalUrl += "&cliente_id=" + req.cookies.cliente_id;
+	if (cliente_id) {
+		if (!clienteYaMigrado || pideCookies) {
+			req.originalUrl += caracter + "cliente_id=" + cliente_id;
+			if (email) req.originalUrl += "&email=" + email;
+			if (!clienteYaMigrado) res.cookie("clienteYaMigrado", true, {maxAge: 1000 * 60 * 60 * 24 * 30});
+		}
+	} else req.originalUrl += caracter + "cliente_id=" + cliente_id;
+	// return res.send(req.cookies);
 
 	// Redirige a 'películas.evangelicemoslacultura'
 	return res.redirect(urlHost + req.originalUrl);
