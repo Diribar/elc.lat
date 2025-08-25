@@ -1,8 +1,0 @@
-<% if (rclvEnt == "epocasDelAno") destino += '&hoyLocal=' + hoyLocal + "&origen=CN" %>
-<a href="<%= destino %>" class="toggle absoluteCentro" tabindex="-1">
-	<button id="cartelRclv" type="button" class="cartel scaleCh">
-		<% const delLa = comp.obtieneDesdeEntidad.delLa(rclvEnt) %>
-		<% const familia = comp.obtieneDesdeEntidad.entidadNombre(rclvEnt) %>
-		Detalle <%= delLa %><br><%= familia %>
-	</button>
-</a>
