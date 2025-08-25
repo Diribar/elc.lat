@@ -149,7 +149,7 @@ module.exports = {
 		console.log("✅ Fin de rutinas semanales");
 
 		// Verifica los links automatizados - si llegó hasta acá, es porque cambió la semana
-		this.verificaLinksAutoms();
+		this.rutinas.verificaLinksAutoms();
 
 		// Fin
 		return;
@@ -431,10 +431,10 @@ module.exports = {
 		// Rutinas semanales - Gestiones
 		estableceLosNuevosLinksVencidos: async function () {
 			// Variables generales
+			const ahora = new Date();
 			const novedades = {statusRegistro_id: creadoAprob_id, statusSugeridoPor_id: usAutom_id, statusSugeridoEn: ahora};
 			const condicion = {statusRegistro_id: aprobado_id, prodAprob: true};
 			const fechaDeCorte = new Date(lunesDeEstaSemana + unaSemana);
-			const ahora = new Date();
 			const espera = [];
 			let fechaVencim;
 
