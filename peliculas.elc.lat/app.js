@@ -17,7 +17,11 @@ global.entPrueba = global.path.basename(__dirname) == "2-Prueba";
 global.entDesarr = !entProd && !entPrueba;
 
 // Variables que dependen del entorno
-global.urlHost = entProd ? "https://peliculas.elc.lat" : entPrueba ? "https://peliculas2.elc.lat" : "https://peliculas.elc:3001";
+const urlHost = entProd
+	? "https://peliculas.evangelicemoslacultura.com"
+	: entPrueba
+	? "https://peliculas2.evangelicemoslacultura.com"
+	: "https://peliculas.evangelicemoslacultura:3006";
 
 // Listener
 const puerto = entProd ? 4210 : entPrueba ? 4207 : 3001;
@@ -27,3 +31,13 @@ if (entDesarr) {
 	const opciones = {cert: fs.readFileSync("./variables/https-cert.pem"), key: fs.readFileSync("./variables/https-clave.pem")};
 	https.createServer(opciones, app).listen(puerto, () => console.log("\nELC Películas - Servidor funcionando...")); // Para conectarse con el servidor
 } else app.listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
+
+// Redirige
+app.use((req, res) => {
+	// Obtiene las cookies para que sean compartidas
+	if (req.cookies && req.cookies.email) req.originalUrl += "&email=" + req.cookies.email;
+	if (req.cookies && req.cookies.cliente_id) req.originalUrl += "&cliente_id=" + req.cookies.cliente_id;
+
+	// Redirige a 'películas.evangelicemoslacultura'
+	return res.redirect(urlHost + req.originalUrl);
+});
