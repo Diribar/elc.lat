@@ -49,6 +49,6 @@ app.use((req, res) => {
 	} else req.originalUrl += caracter + "cliente_id=" + cliente_id;
 	// return res.send(req.cookies);
 
-	// Redirige a 'películas.evangelicemoslacultura'
+	// Redirige a 'peliculas.evangelicemoslacultura'
 	return res.redirect(urlHost + req.originalUrl);
 });
