@@ -8,7 +8,7 @@ const entPrueba = carpeta == "2-Prueba";
 const entDes = !entProd && !entPrueba;
 
 // Host
-global.urlHost = entProd ? "https://peliculas.elc.lat" : entPrueba ? "https://peliculas2.elc.lat" : "http://peliculas.elc:3001";
+global.urlHost = entProd ? "https://peliculas.elc.lat" : entPrueba ? "https://peliculas2.elc.lat" : "https://peliculas.elc:3001";
 if (!entDes) global.dominio = {domain: "elc.lat"};
 
 // Otros requires
