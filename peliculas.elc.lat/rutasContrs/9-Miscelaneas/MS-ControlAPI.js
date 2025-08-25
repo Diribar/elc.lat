@@ -105,9 +105,6 @@ module.exports = {
 		return res.json();
 	},
 	obtieneCookies: (req, res) => {
-		const apiKey = req.headers["x-api-key"];
-		if (apiKey != "MI_API_KEY_SECRETA") console.log("Acceso denegado");
-		console.log(108,req.cookies);
-		return res.json(req.cookies);
+		return res.json();
 	},
 };
