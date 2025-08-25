@@ -11,7 +11,6 @@ const app = express();
 const cookies = require("cookie-parser");
 app.use(cookies());
 
-
 // Variables que toman valores de 'path'
 const entProd = global.path.basename(__dirname) == "1-Actual";
 global.entPrueba = global.path.basename(__dirname) == "2-Prueba";
