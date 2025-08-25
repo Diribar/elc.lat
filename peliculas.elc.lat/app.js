@@ -4,7 +4,6 @@ console.clear();
 
 // Requires
 global.path = require("path");
-global.fs = require("fs");
 global.express = require("express");
 const app = express();
 
@@ -24,6 +23,7 @@ global.urlHost = entProd ? "https://peliculas.elc.lat" : entPrueba ? "https://pe
 const puerto = entProd ? 4210 : entPrueba ? 4207 : 3001;
 if (entDesarr) {
 	const https = require("https");
+	const fs = require("fs");
 	const opciones = {cert: fs.readFileSync("./variables/https-cert.pem"), key: fs.readFileSync("./variables/https-clave.pem")};
 	https.createServer(opciones, app).listen(puerto, () => console.log("\nELC Películas - Servidor funcionando...")); // Para conectarse con el servidor
 } else app.listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
