@@ -2,7 +2,6 @@
 // Start-up - última carpeta git subida: 1.04
 console.clear();
 
-
 // Requires
 global.path = require("path");
 global.express = require("express");
@@ -11,6 +10,7 @@ const app = express();
 // Para usar cookies
 const cookies = require("cookie-parser");
 app.use(cookies());
+
 
 // Variables que toman valores de 'path'
 const entProd = global.path.basename(__dirname) == "1-Actual";
