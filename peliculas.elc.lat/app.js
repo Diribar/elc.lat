@@ -28,8 +28,8 @@ const puerto = entProd ? 4210 : entPrueba ? 4207 : 3001;
 if (entDesarr) {
 	const https = require("https");
 	const fs = require("fs");
-	const opciones = {cert: fs.readFileSync("./variables/https-cert.pem"), key: fs.readFileSync("./variables/https-clave.pem")};
-	https.createServer(opciones, app).listen(puerto, () => console.log("\nELC Películas - Servidor funcionando...")); // Para conectarse con el servidor
+	const opciones = {cert: fs.readFileSync("./https-cert.pem"), key: fs.readFileSync("./https-clave.pem")};
+	https.createServer(opciones, app).listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
 } else app.listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
 
 // Redirige
@@ -44,7 +44,7 @@ app.use((req, res) => {
 		if (!clienteYaMigrado || pideCookies) {
 			req.originalUrl += caracter + "cliente_id=" + cliente_id;
 			if (email) req.originalUrl += "&email=" + email;
-			if (!clienteYaMigrado) res.cookie("clienteYaMigrado", true, {maxAge: 1000 * 60 * 60 * 24 * 30});
+			if (!clienteYaMigrado) res.cookie("clienteYaMigrado", true, {maxAge: 1000 * 60 * 60 * 24 * 365}); // un año
 		}
 	} else req.originalUrl += caracter + "sinCookie=true";
 
