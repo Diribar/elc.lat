@@ -1,6 +1,5 @@
 "use strict";
 console.clear();
-console.log("peliculas inicio", new Date());
 
 // Requires
 const path = require("path");
@@ -45,8 +44,6 @@ app.use((req, res) => {
 	} else req.originalUrl += caracter + "sinCookie=true";
 
 	// Redirige a 'peliculas.evangelicemoslacultura'
-	console.log("peliculas redirige", new Date());
-	// req.originalUrl += "&sinCookie=true"
-	// return res.send(req.cookies);
+	console.log(47, req.cookies, req.originalUrl);
 	return res.redirect(urlHost + req.originalUrl);
 });
