@@ -16,13 +16,6 @@ const entProd = global.path.basename(__dirname) == "1-Actual";
 global.entPrueba = global.path.basename(__dirname) == "2-Prueba";
 global.entDesarr = !entProd && !entPrueba;
 
-// Variables que dependen del entorno
-const urlHost = entProd
-	? "https://peliculas.evangelicemoslacultura.com"
-	: entPrueba
-	? "https://peliculas2.evangelicemoslacultura.com"
-	: "https://peliculas.evangelicemoslacultura:3006";
-
 // Listener
 const puerto = entProd ? 4210 : entPrueba ? 4207 : 3001;
 if (entDesarr) {
@@ -31,6 +24,11 @@ if (entDesarr) {
 	const opciones = {cert: fs.readFileSync("./https-cert.pem"), key: fs.readFileSync("./https-clave.pem")};
 	https.createServer(opciones, app).listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
 } else app.listen(puerto, () => console.log("\nELC Películas Redirecciona - Servidor funcionando...")); // Para conectarse con el servidor
+
+// Host
+const inicio = "https://peliculas";
+const elc = "evangelicemoslacultura";
+const urlHost = entProd ? `${inicio}.${elc}.com` : entPrueba ? `${inicio}2.${elc}.com` : `${inicio}.${elc}:3006`;
 
 // Redirige
 app.use((req, res) => {
