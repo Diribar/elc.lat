@@ -1,6 +1,4 @@
 {
-	"name": "elc-peliculas",
-	"description": "Recomendación de películas con valores afines a la Iglesia Católica",
 	"main": "app.js",
 	"scripts": {
 		"start": "nodemon -e js app.js"
@@ -14,9 +12,5 @@
 	},
 	"devDependencies": {
 		"nodemon": "^3.1.10"
-	},
-	"repository": {
-		"type": "git",
-		"url": "//github.com/Diribar/ELC-Rutinas"
 	}
 }
