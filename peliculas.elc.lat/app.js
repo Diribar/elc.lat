@@ -31,6 +31,8 @@ const urlHost = entProd ? `${inicio}.${elc}.com` : entPrueba ? `${inicio}2.${elc
 app.use((req, res) => {
 	// Acciones si pide cookies
 	if (req.query.pideCookies) {
+		console.log("pide cookies");
+
 		// Variables
 		const {cliente_id, email} = req.cookies;
 
