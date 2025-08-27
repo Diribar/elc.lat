@@ -27,7 +27,7 @@ if (entDesarr) {
 // Redirige
 const inicio = "https://peliculas";
 const elc = "evangelicemoslacultura";
-const urlHost = entProd ? `${inicio}.${elc}.com` : entPrueba ? `${inicio}2.${elc}.com` : `${inicio}.${elc}:3006`;
+const urlHost = inicio + (entProd ? `.${elc}.com` : entPrueba ? `2.${elc}.com` : `.${elc}:3006`);
 app.use((req, res) => {
 	// Acciones si pide cookies
 	if (req.query.pideCookies) {
