@@ -22,6 +22,6 @@ app.listen(puerto, () => console.log("\nELC Redirecciona - Servidor funcionando.
 // Redirige
 const urlHost = entProd ? "https://peliculas.elc.lat" : entPrueba ? "https://peliculas2.elc.lat" : "https://peliculas.elc:3001";
 app.use((req, res) => {
-	console.log(25, req.cookies, req.originalUrl);
+	console.log(25, req.originalUrl);
 	return res.redirect(urlHost + req.originalUrl);
 });
