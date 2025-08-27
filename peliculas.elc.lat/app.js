@@ -1,6 +1,5 @@
 "use strict";
 console.clear();
-console.log("peliculas inicio", new Date());
 
 // Requires
 const path = require("path");
@@ -35,18 +34,18 @@ app.use((req, res) => {
 	const {pideCookies} = req.query;
 	const caracter = Object.keys(req.query).length ? "&" : "?";
 
-	// Obtiene las cookies para que sean compartidas
+	// Envía las cookies de 'cliente_id' y 'email'
 	if (cliente_id) {
 		if (!clienteYaMigrado || pideCookies) {
 			req.originalUrl += caracter + "cliente_id=" + cliente_id;
 			if (email) req.originalUrl += "&email=" + email;
 			if (!clienteYaMigrado) res.cookie("clienteYaMigrado", true, {maxAge: 1000 * 60 * 60 * 24 * 365}); // un año
 		}
-	} else req.originalUrl += caracter + "sinCookie=true";
+	}
+	// Envía la cookie de 'sinCookie'
+	else req.originalUrl += caracter + "sinCookie=true";
 
 	// Redirige a 'peliculas.evangelicemoslacultura'
-	console.log("peliculas redirige", new Date());
-	// req.originalUrl += "&sinCookie=true"
-	// return res.send(req.cookies);
+	req.originalUrl = req.originalUrl.replace("pideCookies=true&", "");
 	return res.redirect(urlHost + req.originalUrl);
 });

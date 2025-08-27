@@ -1,6 +1,5 @@
 "use strict"; // 2025-ago-26
 console.clear();
-console.log("elc inicio", new Date());
 
 // Requires
 const path = require("path");
@@ -23,7 +22,6 @@ app.listen(puerto, () => console.log("\nELC Redirecciona - Servidor funcionando.
 // Redirige
 const urlHost = entProd ? "https://peliculas.elc.lat" : entPrueba ? "https://peliculas2.elc.lat" : "https://peliculas.elc:3001";
 app.use((req, res) => {
-	// return res.send(req.cookies);
-	console.log("elc redirige", new Date());
+	console.log(25, req.cookies, req.originalUrl);
 	return res.redirect(urlHost + req.originalUrl);
 });
