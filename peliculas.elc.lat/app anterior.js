@@ -27,22 +27,25 @@ if (entDesarr) {
 // Redirige
 const inicio = "https://peliculas";
 const elc = "evangelicemoslacultura";
-const urlHost = inicio + (entProd ? `.${elc}.com` : entPrueba ? `2.${elc}.com` : `.${elc}:3006`);
+const urlHost = entProd ? `${inicio}.${elc}.com` : entPrueba ? `${inicio}2.${elc}.com` : `${inicio}.${elc}:3006`;
 app.use((req, res) => {
-	// Acciones si pide cookies
-	if (req.query.pideCookies) {
-		// Variables
-		const {cliente_id, email} = req.cookies;
+	// Variables
+	const {cliente_id, email, clienteYaMigrado} = req.cookies;
+	const {pideCookies} = req.query;
+	const caracter = Object.keys(req.query).length ? "&" : "?";
 
-		// Envía las cookies de 'cliente_id' y 'email'
-		if (cliente_id) req.originalUrl += "&cliente_id=" + cliente_id;
-		if (email) req.originalUrl += "&email=" + email;
-
-		// Otras
-		if (!cliente_id && !email) req.originalUrl += "&sinCookie=true"; // Si no tiene ninguna de ellas, envía la cookie 'sinCookie'
-		req.originalUrl = req.originalUrl.replace("pideCookies=true&", ""); // Limpia el url
+	// Envía las cookies de 'cliente_id' y 'email'
+	if (cliente_id) {
+		if (!clienteYaMigrado || pideCookies) {
+			req.originalUrl += caracter + "cliente_id=" + cliente_id;
+			if (email) req.originalUrl += "&email=" + email;
+			if (!clienteYaMigrado) res.cookie("clienteYaMigrado", true, {maxAge: 1000 * 60 * 60 * 24 * 365}); // un año
+		}
 	}
+	// Envía la cookie de 'sinCookie'
+	else req.originalUrl += caracter + "sinCookie=true";
 
 	// Redirige a 'peliculas.evangelicemoslacultura'
+	req.originalUrl = req.originalUrl.replace("pideCookies=true&", "");
 	return res.redirect(urlHost + req.originalUrl);
 });

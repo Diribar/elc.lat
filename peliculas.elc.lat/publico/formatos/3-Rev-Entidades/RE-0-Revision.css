@@ -1,3 +1,0 @@
-/* Cuerpo */
-#cuerpoFooterImgDer:has(.revisionEnts, .mantenimiento) {background: var(--gris-claro);}
-#cuerpo {flex-direction: column;}

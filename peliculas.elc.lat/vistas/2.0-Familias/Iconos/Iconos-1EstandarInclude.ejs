@@ -1,9 +1,0 @@
-<% if (locals.status_id && (activos_ids.includes(status_id) || !rubro && status_id != inactivo_id)) { %>
-	<!-- Activo -->
-	<a href="/<%= entidad %>/<%= rubro %>/<%= siglaFam %>/?id=<%= id %><%= (locals.origen && origen != 'DT' ? ('&origen=' + origen) : '') %>" tabindex="-1">
-		<i class="<%= iconos.faSolid %> <%= iconos[icono] %> <%= locals.yaCalificada || '' %>" tabindex="-1" title="<%= titulo %>"></i>
-	</a>
-<% } else { %>
-	<!-- Inactivo -->
-	<i class="<%= iconos.faSolid %> <%= iconos[icono] %> <%= locals.yaCalificada || '' %> inactivo" tabindex="-1" title="<%= titulo %>"></i>
-<% } %>

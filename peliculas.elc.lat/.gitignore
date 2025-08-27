@@ -1,4 +1,5 @@
+baseDatos/varios/*.sql
 node_modules
 *.zip
 *.pem
-baseDatos/varios/*.sql
+API-keys.js
