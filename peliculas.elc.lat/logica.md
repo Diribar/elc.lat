@@ -1,0 +1,19 @@
+¿tiene cookies?
+  - SI
+    - ¿Cliente ya migrado?
+      - NO
+	- toma cookies
+	- actualiza cliente como ya migrado (cookie)
+	- cambia el dominio
+	- redirige con cookies
+      - params pideCookies = true
+	- toma cookies
+	- cambia el dominio
+	- redirige con cookies
+      - else
+	- cambia el dominio
+	- redirige sin cookies
+  - NO
+    - cambia el dominio
+    - agrega sinCookie = true
+    - redirige sin cookies
